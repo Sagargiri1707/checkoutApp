@@ -5,17 +5,20 @@ import { useContext } from 'react';
 import { GlobalAppContext } from '../../Context/Context'
 
 function Product(props) {
-    const { checkedState, changeCheckedState } = useContext(GlobalAppContext);
+    const { checkedState, changeCheckedState, addOrDeleteItem } = useContext(GlobalAppContext);
 
     function changeCartVolume(item,a){
         console.log(item,a)
+        console.log(item,a)
+        const type= a==='-' || a==='+' ? "alter" : 'delete'
+        addOrDeleteItem(props.id,type,a)
     }
     return (
         <div className="border-2 m-2 mt-6 w-2/3 p-6 relative">
             <input
                 type="checkbox"
                 checked={checkedState[props.id]}
-                onChange={(e) => changeCheckedState(props.id)}
+                onChange={(e) => changeCheckedState(props.index)}
                 className="rounded mr-2 absolute left-4 top-4 h-4 w-4"
             />
             <div className="flex justify-between">
@@ -40,7 +43,6 @@ function Product(props) {
                     <div className='mb-4'>
                         <span>
                             Delivery by {props.deliveryDetails.eta}
-
                         </span>
                         <div className={props.deliveryDetails.isdeliveryChargeWaived ? "text-green-500 font-semibold line-through" : ""}>
                             {props.deliveryDetails.deliveryCharge} Delivery charge
@@ -49,14 +51,8 @@ function Product(props) {
                             If ordered within timer component
                         </span>}
                     </div>
-                    
-                    
-
                     {props.ratingValue && <Rating {...props.ratingValue} />}
-
-                    {/* <DropDown ctatext={props.quantity} options={[1, 2, 3, 4, 5]} onChange={changeCartVolume}/> */}
                     <div className='flex justify-between mt-8'>
-
                         <ProductQuantity index={props.quantity} onChange={changeCartVolume} />
                         <Button text={"Delete"} id={props.id} onChange={changeCartVolume} color="rose" />
                     </div>
