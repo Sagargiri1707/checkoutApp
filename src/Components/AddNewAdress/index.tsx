@@ -2,11 +2,20 @@ import { useState } from "react"
 import { toast } from "react-toastify";
 import { useContext } from 'react';
 import { GlobalAppContext } from '../../Context/Context'
+interface FormState {
+    name: string;
+    address: string;
+    phone: string;
+    state: string;
+    city: string;
+    pincode: string;
+    landmark: string;
+}
 
 
-function AddNewAdress(props) {
+function AddNewAdress() {
     const { addNewAdress } = useContext(GlobalAppContext);
-    const [formState,setFormState] = useState({
+    const [formState, setFormState] = useState <FormState>({
 name:"",
         address:"",
         phone:"",

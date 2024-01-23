@@ -9,33 +9,97 @@ import initVal from './ApiResponses/CheckoutApiResponse.json'
 import addressVal from './ApiResponses/AddressListResponse.json'
 import "react-toastify/dist/ReactToastify.min.css";
 
+interface Media {
+  type: string;
+  url: string;
+}
+
+interface RatingValue {
+  type: string;
+  average: number;
+  base: number;
+  count: number;
+  roundOffCount: string;
+}
+
+interface Titles {
+  subtitle: string;
+  title: string;
+}
+
+interface DeliveryDetails {
+  eta: string;
+  deliveryCharge: string;
+  isdeliveryChargeWaived: boolean;
+  isFasterDeliveryAvailable: boolean;
+  time: number;
+}
+
+interface SellerDetails {
+  name: string;
+}
+
+interface ItemPrice {
+  originalPrice: number;
+  discountedPrice: number;
+  percentageOff: number;
+  offersAvailable: {
+    count: number;
+  };
+}
+
+interface ProductData {
+  id: number;
+  media: Media;
+  quantity: number;
+  ratingValue: RatingValue;
+  titles: Titles;
+  deliveryDetails: DeliveryDetails;
+  sellerDetails: SellerDetails;
+  itemPrice: ItemPrice;
+}
+
+interface Address {
+  id: number;
+  city: string;
+  isDefault: boolean;
+  landmark: string;
+  locationTypeTag: string;
+  name: string;
+  phone: string;
+  pincode: string;
+  state: string;
+  address: string;
+}
 const App: React.FC = () => {
-  const [checkedState, setCheckedState] = useState(Array(initVal.productData.length).fill(false))
-  const [currentStep, setCurrentStep] = useState(0)
-  const [currentAddress, setCurrentAddress] = useState(addressVal.addressList.map(adress => adress.isDefault))
-  const [productDetails, setProductDetails] = useState(initVal)
-  const [adressDetails, setAdressDetails] = useState(addressVal)
-  function changeCheckedState(index) {
+  const [checkedState, setCheckedState] = useState<boolean[]>(Array(initVal.productData.length).fill(false))
+  const [currentStep, setCurrentStep] = useState<number>(0)
+  const [currentAddress, setCurrentAddress] = useState<boolean[]>(addressVal.addressList.map(adress => adress.isDefault))
+  const [productDetails, setProductDetails] = useState < {
+    productData: ProductData[];
+  }>(initVal)
+  const [adressDetails, setAdressDetails] = useState < { addressList: Address[] }>(addressVal)
+  function changeCheckedState(index:number) {
     setCheckedState(checkedState.map((state, id) => {
       if (id === index) return !state
       else return state
     }))
   }
-  function changeCurrentStep(step) {
+  function changeCurrentStep(step:number) {
     setCurrentStep(step)
   }
-  function changeCurrentAdress(index) {
+  function changeCurrentAdress(index:number) {
     setCurrentAddress(currentAddress.map((adress, id) => {
       if (id === index) return !adress
       else return false
     }))
   }
-  function addNewAdress(address) {
+  function addNewAdress(address:Address) {
     setAdressDetails(prevState => {
       return { ...prevState, addressList: [...prevState.addressList, address] }
     })
   }
-  function addOrDeleteItem(id, type,sign) {
+  function addOrDeleteItem(id: number, type: 'delete' | 'alter', sign: '+' | '-') {
     if (type === "delete") {
       setProductDetails(prevState => {
         return { ...prevState, productData: prevState.productData.filter(productData => productData.id !== id) }

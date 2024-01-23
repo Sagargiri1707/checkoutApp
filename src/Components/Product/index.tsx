@@ -3,58 +3,94 @@ import Rating from '../Rating'
 import ProductQuantity from '../../ProductQuantity/ProductQuantity';
 import { useContext } from 'react';
 import { GlobalAppContext } from '../../Context/Context'
+interface ProductProps {
+    id: number;
+    index: number;
+    media: {
+        type: string;
+        url: string;
+    };
+    titles: {
+        title: string;
+        subtitle: string;
+    };
+    sellerDetails: {
+        name: string;
+    };
+    itemPrice: {
+        originalPrice: number;
+        discountedPrice: number;
+        percentageOff: number;
+        offersAvailable: {
+            count: number;
+        };
+    };
+    deliveryDetails: {
+        eta: string;
+        deliveryCharge: string;
+        isdeliveryChargeWaived: boolean;
+        isFasterDeliveryAvailable: boolean;
+    };
+    ratingValue: {
+        type: string;
+        average: number;
+        base: number;
+        count: number;
+        roundOffCount: string;
+    };
+    quantity: number;
+}
 
-function Product(props) {
+function Product({ id, index, media, titles, sellerDetails, itemPrice, deliveryDetails, ratingValue, quantity }: ProductProps) {
     const { checkedState, changeCheckedState, addOrDeleteItem } = useContext(GlobalAppContext);
 
-    function changeCartVolume(item,a){
-        console.log(item,a)
-        console.log(item,a)
+    function changeCartVolume(event: React.MouseEvent<HTMLButtonElement>, a:'+' | '-'){
         const type= a==='-' || a==='+' ? "alter" : 'delete'
-        addOrDeleteItem(props.id,type,a)
+        addOrDeleteItem(id,type,a)
+
     }
     return (
         <div className="border-2 m-2 mt-6 w-2/3 p-6 relative">
             <input
                 type="checkbox"
-                checked={checkedState[props.id]}
-                onChange={(e) => changeCheckedState(props.index)}
+                checked={checkedState[id]}
+                onChange={(e) => changeCheckedState(index)}
                 className="rounded mr-2 absolute left-4 top-4 h-4 w-4"
             />
             <div className="flex justify-between">
                 <div className="h-48 ">
                     {
-                    props.media.type === "image" ? <img className=" h-full w-auto" src={props.media.url} /> : <video src={props.media.url}></video>
+                    media.type === "image" ? <img className=" h-full w-auto" src={media.url} /> : <video src={media.url}></video>
                 }
 
                 </div>
                 <div className="w-5/12">
-                    <div className="font-semibold text-lg">{props.titles.title}</div>
-                    <div className="font-light	text-slate-400 text-sm">{props.titles.subtitle}</div>
-                    <div className="font-light	text-slate-400 text-sm">{props.sellerDetails.name}</div>
+                    <div className="font-semibold text-lg">{titles.title}</div>
+                    <div className="font-light	text-slate-400 text-sm">{titles.subtitle}</div>
+                    <div className="font-light	text-slate-400 text-sm">{sellerDetails.name}</div>
                     <div>
-                        <span className="font-light	text-neutral-500 text-sm line-through">{props.itemPrice.originalPrice}</span>
-                        <span className="font-bold	text-green-500 text-lg">{props.itemPrice.discountedPrice} {props.itemPrice.percentageOff}% off</span>
-                        {props.itemPrice.offersAvailable > 0 ? <span>{props.itemPrice.offersAvailable.count
+                        <span className="font-light	text-neutral-500 text-sm line-through">{itemPrice.originalPrice}</span>
+                        <span className="font-bold	text-green-500 text-lg">{itemPrice.discountedPrice} {itemPrice.percentageOff}% off</span>
+                        {itemPrice.offersAvailable.count > 0 ? <span>{itemPrice.offersAvailable.count
                         } offers available</span> : null}
                     </div>
                 </div>
                 <div className="w-3/12 align-between">
                     <div className='mb-4'>
                         <span>
-                            Delivery by {props.deliveryDetails.eta}
+                            Delivery by {deliveryDetails.eta}
                         </span>
-                        <div className={props.deliveryDetails.isdeliveryChargeWaived ? "text-green-500 font-semibold line-through" : ""}>
-                            {props.deliveryDetails.deliveryCharge} Delivery charge
+                        <div className={deliveryDetails.isdeliveryChargeWaived ? "text-green-500 font-semibold line-through" : ""}>
+                            {deliveryDetails.deliveryCharge} Delivery charge
                         </div>
-                        {props.deliveryDetails.isFasterDeliveryAvailable && <span>
+                        {deliveryDetails.isFasterDeliveryAvailable && <span>
                             If ordered within timer component
                         </span>}
                     </div>
-                    {props.ratingValue && <Rating {...props.ratingValue} />}
+                    {ratingValue && <Rating {...ratingValue} />}
                     <div className='flex justify-between mt-8'>
-                        <ProductQuantity index={props.quantity} onChange={changeCartVolume} />
-                        <Button text={"Delete"} id={props.id} onChange={changeCartVolume} color="rose" />
+                        <ProductQuantity index={quantity} onChange={changeCartVolume} />
+                        <Button text={"Delete"} id={id} onChange={changeCartVolume} color="rose" />
                     </div>
                 </div>
             </div>

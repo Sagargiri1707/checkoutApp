@@ -1,5 +1,15 @@
+import { MouseEventHandler } from 'react';
 
-function Button({ text, onChange, id, type, color, disabled, customClass }) {
+interface ButtonProps {
+    text: string;
+    onChange: (e:MouseEventHandler<HTMLButtonElement>,id:string)=>void;
+    id: number;
+    type?: "button" | "submit" | "reset";
+    color?: string;
+    disabled?: boolean;
+    customClass?: string;
+}
+function Button({ text, onChange, id, type, color, disabled, customClass }: ButtonProps) {
     return (
         <button 
         type={type || "button"}

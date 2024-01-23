@@ -1,4 +1,10 @@
-function ProductQuantity({ index, onChange }) {
+
+interface ProductQuantityProps {
+    index: number;
+    onChange: (event: React.MouseEvent<HTMLButtonElement>, action: string) => void;
+}
+
+function ProductQuantity({ index, onChange }: ProductQuantityProps) {
 
     return <div className="flex items-center justify-center w-12 bg-white rounded-md">
         <button type="button" disabled={index == 0} onClick={(e) => onChange(e,'-')} className="text-lg text-gray-400 hover:text-gray-500 focus:outline-none font-bold">
