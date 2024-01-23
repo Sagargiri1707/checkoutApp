@@ -72,13 +72,14 @@ interface Address {
   address: string;
 }
 const App: React.FC = () => {
-  const [checkedState, setCheckedState] = useState<boolean[]>(Array(initVal.productData.length).fill(false))
-  const [currentStep, setCurrentStep] = useState<number>(0)
-  const [currentAddress, setCurrentAddress] = useState<boolean[]>(addressVal.addressList.map(adress => adress.isDefault))
-  const [productDetails, setProductDetails] = useState < {
+  const [productDetails, setProductDetails] = useState<{
     productData: ProductData[];
   }>(initVal)
-  const [adressDetails, setAdressDetails] = useState < { addressList: Address[] }>(addressVal)
+  const [checkedState, setCheckedState] = useState<boolean[]>(Array(productDetails.productData.length).fill(false))
+  const [currentStep, setCurrentStep] = useState<number>(0)
+  const [adressDetails, setAdressDetails] = useState<{ addressList: Address[] }>(addressVal)
+
+  const [currentAddress, setCurrentAddress] = useState<boolean[]>(adressDetails.addressList.map(adress => adress.isDefault))
   function changeCheckedState(index:number) {
     setCheckedState(checkedState.map((state, id) => {
       if (id === index) return !state
@@ -98,6 +99,7 @@ const App: React.FC = () => {
     setAdressDetails(prevState => {
       return { ...prevState, addressList: [...prevState.addressList, address] }
     })
+    setCurrentAddress([...adressDetails.addressList, address].map(adress => adress.isDefault))
   }
   function addOrDeleteItem(id: number, type: 'delete' | 'alter', sign: '+' | '-') {
     if (type === "delete") {

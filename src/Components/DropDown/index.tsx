@@ -22,7 +22,7 @@ function DropDown({ ctatext, options, onChange }: DropDownProps){
           </button>
         </div>
         {
-          opened ? <div onBlur={() => {console.log('cakked'); setIsOpened(false)}} className="absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
+          opened ? <div onBlur={() => {setIsOpened(false)}} className="absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
             <div className="py-1" role="none">
               {options.map((a) => {
                 return <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" id="menu-item-0" onClick={() => handleChange(a)}>{a}</a>
