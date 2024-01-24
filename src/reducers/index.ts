@@ -5,7 +5,8 @@ export const initState = {
   adressDetails: { addressList: [] },
   currentAddress: [],
   currentStep: 0,
-  checkedState: []
+  checkedState: [],
+  successLoader: false,
 };
 
 export const eventsReducer = (state:any, { type, payload }):any => {
@@ -58,6 +59,18 @@ export const eventsReducer = (state:any, { type, payload }):any => {
         ...state,
         checkedState:payload
       };
+    }
+    case Actions.START_SUCCESS_LOADER:{
+return {
+  ...state,
+  successLoader:true
+};
+    }
+    case Actions.END_SUCCESS_LOADER:{
+return {
+  ...state,
+  successLoader: false,
+};
     }
     default:
       return state;

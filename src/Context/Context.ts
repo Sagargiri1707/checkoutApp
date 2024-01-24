@@ -81,6 +81,8 @@ interface GlobalAppContextProps {
     type: 'delete' | 'alter',
     sign: '+' | '-'
   ) => void;
+  successLoader: boolean;
+  purchaseItem: () => void;
 }
 
-export const GlobalAppContext = createContext < GlobalAppContextProps>('');
+export const GlobalAppContext = createContext<GlobalAppContextProps>('');
