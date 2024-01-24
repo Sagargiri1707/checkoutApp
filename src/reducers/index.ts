@@ -1,0 +1,65 @@
+import * as Actions from './Actions';
+
+export const initState = {
+  productDetails: { productData: [], loading: false },
+  adressDetails: { addressList: [] },
+  currentAddress: [],
+  currentStep: 0,
+  checkedState: []
+};
+
+export const eventsReducer = (state:any, { type, payload }):any => {
+  switch (type) {
+    case Actions.FETCH_PRODUCT_DATA_START: {
+      return {
+        ...state,
+        productDetails: { ...state.productDetails, loading: true },
+      };
+    }
+    case Actions.FETCH_PRODUCT_DATA_SUCCESS: {
+      return {
+        ...state,
+        productDetails: { ...state.productDetails, ...payload },
+      };
+    }
+    case Actions.FETCH_PRODUCT_DATA_FAIL: {
+      return {
+        ...state,
+        productDetails: { ...state.productDetails, loading: false },
+      };
+    }
+    case Actions.SET_PRODUCT_DATA: {
+      return {
+        ...state,
+        productDetails: { ...state.productDetails, ...payload },
+      };
+    }
+
+    case Actions.SET_ADDRESS_DATA: {
+      return {
+        ...state,
+        adressDetails: { ...state.adressDetails, ...payload },
+      };
+    }
+    case Actions.SET_CURRENT_ADDRESS:{
+      return {
+        ...state,
+        currentAddress:payload
+      };
+    }
+    case Actions.SET_CURRENT_STEP:{
+      return {
+        ...state,
+        currentStep:payload
+      };
+    }
+    case Actions.SET_CHECKED_STATE:{
+      return {
+        ...state,
+        checkedState:payload
+      };
+    }
+    default:
+      return state;
+  }
+};

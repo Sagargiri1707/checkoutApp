@@ -1,15 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Home from './Pages/Home';
 import { GlobalAppContext } from './Context/Context'
 import { ToastContainer } from "react-toastify";
-
-import addressVal from './ApiResponses/AddressListResponse.json'
 import "react-toastify/dist/ReactToastify.min.css";
 import { getProductList, getAddressList, completePurchase } from './Utils'
 import { toast } from "react-toastify";
-
+import { eventsReducer, initState } from './reducers/index'
+import * as Actions from './reducers/Actions'
 interface Media {
   type: string;
   url: string;
@@ -73,79 +72,105 @@ interface Address {
   address: string;
 }
 const App: React.FC = () => {
+
+  const [state, dispatch] = useReducer(eventsReducer, initState);
+
+
   useEffect(() => {
-    setProductDetails({...productDetails,loading:true})
+    dispatch({
+      type: Actions.FETCH_PRODUCT_DATA_START,
+      payload: {}
+    })
     getProductList().then((res) => {
-      setProductDetails({...res,loading:false})
-      setCheckedState(Array(res.productData.length).fill(false))
+      dispatch({
+        type: Actions.FETCH_PRODUCT_DATA_SUCCESS,
+        payload: { ...res, loading: false }
+      })
+      dispatch({
+        type: Actions.SET_CHECKED_STATE,
+        payload: Array(res.productData.length).fill(false)
+      })
     }).catch(_ => {
       toast.error("Failed in fetching api product list")
     })
     getAddressList().then((res) => {
-      setAdressDetails(res)
-      setCurrentAddress(res.addressList.map(adress => adress.isDefault))
+      dispatch({
+        type: Actions.SET_ADDRESS_DATA,
+        payload: res
+      })
+      dispatch({
+        type: Actions.SET_CURRENT_ADDRESS,
+        payload: res.addressList.map(adress => adress.isDefault)
+      })
     }).catch(err => {
 
     })
   }, [])
 
 
-
-  const [productDetails, setProductDetails] = useState<{
-    loading: boolean,
-    productData: ProductData[];
-  }>({ productData: [],loading: false })
-  const [checkedState, setCheckedState] = useState<boolean[]>(Array(productDetails.productData.length).fill(false))
-  const [currentStep, setCurrentStep] = useState<number>(0)
-  const [adressDetails, setAdressDetails] = useState<{ addressList: Address[] }>(addressVal)
-
-  const [currentAddress, setCurrentAddress] = useState<boolean[]>(adressDetails.addressList.map(adress => adress.isDefault))
   function changeCheckedState(index: number) {
-    setCheckedState(checkedState.map((state, id) => {
-      if (id === index) return !state
-      else return state
-    }))
+    dispatch({
+      type: Actions.SET_CHECKED_STATE,
+      payload: state.checkedState.map((state, id) => {
+        if (id === index) return !state
+        else return state
+      })
+    })
   }
   function changeCurrentStep(step: number) {
-    setCurrentStep(step)
+    dispatch({
+      type: Actions.SET_CURRENT_STEP,
+      payload: step
+    })
   }
   function changeCurrentAdress(index: number) {
-    setCurrentAddress(currentAddress.map((adress, id) => {
-      if (id === index) return !adress
-      else return false
-    }))
+
+    dispatch({
+      type: Actions.SET_CURRENT_ADDRESS,
+      payload: state.currentAddress.map((adress, id) => {
+        if (id === index) return !adress
+        else return false
+      })
+    })
   }
   function addNewAdress(address: Address) {
-    setAdressDetails(prevState => {
-      return { ...prevState, addressList: [...prevState.addressList, address] }
+    dispatch({
+      type: Actions.SET_ADDRESS_DATA,
+      payload: { addressList: [...state.adressDetails.addressList, address] }
+
     })
-    setCurrentAddress([...adressDetails.addressList, address].map(adress => adress.isDefault))
   }
   function addOrDeleteItem(id: number, type: 'delete' | 'alter', sign: '+' | '-') {
     if (type === "delete") {
-      setProductDetails(prevState => {
-        return { ...prevState, productData: prevState.productData.filter(productData => productData.id !== id) }
+      dispatch({
+        type: Actions.SET_PRODUCT_DATA,
+        payload: { productData: state.productDetails.productData.filter(productData => productData.id !== id) }
       })
     }
     if (type === "alter") {
-      setProductDetails(prevState => {
-        return {
-          ...prevState,
-          productData: prevState.productData.map(productData => {
+      dispatch({
+        type: Actions.SET_PRODUCT_DATA,
+        payload: {
+          productData: state.productDetails.productData.map(productData => {
             if (productData.id === id) {
               return { ...productData, quantity: sign === "+" ? productData.quantity + 1 : productData.quantity - 1 }
             } else return productData
           })
         }
-
       })
     }
   }
   function purchaseItem() {
     completePurchase().then(res => {
       toast.success(res.msg)
-      changeCurrentStep(0)
-      setProductDetails({ productData: [] })
+      dispatch({
+        type: Actions.SET_CURRENT_STEP,
+        payload: 0
+      })
+      dispatch({
+        type: Actions.SET_PRODUCT_DATA,
+        payload: { productData: [] }
+      })
     })
       .catch(err => {
         toast.error(err.msg)
@@ -161,7 +186,7 @@ const App: React.FC = () => {
         role="alert"
         closeOnClick
       />
-      <GlobalAppContext.Provider value={{ productDetails, addressVal: adressDetails, checkedState, changeCheckedState, currentStep, changeCurrentStep, currentAddress, changeCurrentAdress, addNewAdress, addOrDeleteItem, purchaseItem }}>
+      <GlobalAppContext.Provider value={{ productDetails: state.productDetails, addressVal: state.adressDetails, checkedState: state.checkedState, changeCheckedState, currentStep: state.currentStep, changeCurrentStep, currentAddress: state.currentAddress, changeCurrentAdress, addNewAdress, addOrDeleteItem, purchaseItem }}>
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>

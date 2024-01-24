@@ -1,6 +1,6 @@
 import Button from '../Button';
 import Rating from '../Rating'
-import ProductQuantity from '../../ProductQuantity/ProductQuantity';
+import ProductQuantity from '../ProductQuantity/ProductQuantity';
 import { useContext } from 'react';
 import { GlobalAppContext } from '../../Context/Context'
 interface ProductProps {

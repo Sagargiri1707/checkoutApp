@@ -53,9 +53,11 @@ function Home() {
   }
   return <div className="max-w-44">
     <div className="relative md:container md:mx-auto p-4 m-16 mt-12 border flex-col items-center justify-center flex">
-      {currentStep !== 0 && <button className="absolute left-0 top-0 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => {
+      {currentStep !== 0 && <button className="absolute left-0 top-0 bg-blue-300 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transform scale-x-[-1]" onClick={() => {
         changeCurrentStep(currentStep - 1)
-      }}>Back</button>}
+      }}><svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+        </svg></button>}
       {
         renderItemBasedOnStep(currentStep)
       }
