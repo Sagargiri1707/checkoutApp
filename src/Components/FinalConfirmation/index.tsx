@@ -1,7 +1,10 @@
 import { useContext } from 'react';
 import { GlobalAppContext } from '../../Context/Context';
 function FinalConfirmation() {
-  const { productDetails, checkedState } = useContext(GlobalAppContext);
+  const { productDetails, checkedState, adressDetails, currentAddress } =
+    useContext(GlobalAppContext);
+
+  const selectedAdress = adressDetails.addressList[currentAddress];
   const itemBreakUp = productDetails.productData.reduce(
     (acc, i, index) => {
       if (checkedState[index]) {
@@ -20,7 +23,7 @@ function FinalConfirmation() {
     }
   );
   return (
-    <div className="mx-auto w-96 mt-8 p-4">
+    <div className="mx-auto w-96 mt-8 mb-8 p-4 shadow-md">
       <h2 className="text-2xl font-bold mb-4">Checkout</h2>
 
       <div className="border-t border-b py-2">
@@ -42,12 +45,16 @@ function FinalConfirmation() {
           </span>
         </div>
       </div>
-      <div className="bg-white p-4 rounded shadow-md">
-        <p className="text-xl font-bold mb-2">Address:</p>
+      <div className="bg-white mt-6 rounded w-full">
+        <p className="text-xl font-bold mb-2">Selected address:</p>
         <p className="text-gray-700">
-          {'street'}
+          {selectedAdress.name}
           <br />
-          {'city'}, {'state'} {'postalCode'}
+          {selectedAdress.phone}
+          <br />
+          {selectedAdress.address}
+          <br />
+          {selectedAdress.city}, {selectedAdress.city} {selectedAdress.pincode}
         </p>
       </div>
     </div>

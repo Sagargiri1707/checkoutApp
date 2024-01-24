@@ -29,22 +29,30 @@ const App: React.FC = () => {
           type: Actions.SET_CHECKED_STATE,
           payload: Array(res.data.RESPONSE.productData.length).fill(false),
         });
+        getAddressList()
+          .then(res => {
+            dispatch({
+              type: Actions.SET_ADDRESS_DATA,
+              payload: res,
+            });
+            let i = 0;
+            for (let i = 0; i < res.addressList; i++) {
+              if (res.addressList[i].isDefault) {
+                break;
+              }
+            }
+            dispatch({
+              type: Actions.SET_CURRENT_ADDRESS,
+              payload: i,
+            });
+          })
+          .catch(err => {
+            toast.error('Error in fetching Address api Response');
+          });
       })
       .catch(err => {
         toast.error('Failed in fetching api product list');
       });
-    getAddressList()
-      .then(res => {
-        dispatch({
-          type: Actions.SET_ADDRESS_DATA,
-          payload: res,
-        });
-        dispatch({
-          type: Actions.SET_CURRENT_ADDRESS,
-          payload: res.addressList.map(adress => adress.isDefault),
-        });
-      })
-      .catch(err => {});
   }, []);
 
   function changeCheckedState(index: number) {
@@ -62,13 +70,10 @@ const App: React.FC = () => {
       payload: step,
     });
   }
-  function changeCurrentAdress(index: number) {
+  function changeCurrentAdress(index: number, isChecked: boolean) {
     dispatch({
       type: Actions.SET_CURRENT_ADDRESS,
-      payload: state.currentAddress.map((adress, id) => {
-        if (id === index) return !adress;
-        else return false;
-      }),
+      payload: isChecked ? index : -1,
     });
   }
   function addNewAdress(address: AddressInterface) {
@@ -76,10 +81,6 @@ const App: React.FC = () => {
     dispatch({
       type: Actions.SET_ADDRESS_DATA,
       payload: { addressList: newAddress },
-    });
-    dispatch({
-      type: Actions.SET_CURRENT_ADDRESS,
-      payload: state.currentAddress.concat(false),
     });
   }
   function addOrDeleteItem(
@@ -163,18 +164,13 @@ const App: React.FC = () => {
       />
       <GlobalAppContext.Provider
         value={{
-          productDetails: state.productDetails,
-          addressVal: state.adressDetails,
-          checkedState: state.checkedState,
           changeCheckedState,
-          currentStep: state.currentStep,
           changeCurrentStep,
-          currentAddress: state.currentAddress,
           changeCurrentAdress,
           addNewAdress,
           addOrDeleteItem,
           purchaseItem,
-          successLoader: state.successLoader,
+          ...state,
         }}
       >
         <Routes>

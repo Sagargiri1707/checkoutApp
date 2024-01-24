@@ -17,7 +17,9 @@ function Address({
       <input
         type="checkbox"
         checked={isSelected}
-        onChange={() => onChange(index)}
+        onChange={e => {
+          onChange(index, e.target.checked);
+        }}
         className="rounded mr-2 left-4 top-4 h-4 w-4"
       />
       <div>

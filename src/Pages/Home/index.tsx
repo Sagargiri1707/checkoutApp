@@ -27,7 +27,7 @@ function Home() {
     }
     if (step === 1) {
       text = 'Continue';
-      isBtnDisabled = currentAddress.filter(Boolean).length > 0;
+      isBtnDisabled = currentAddress !== -1;
     } else if (step === 2) {
       text = 'Place order';
     }

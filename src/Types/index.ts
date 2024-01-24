@@ -86,20 +86,21 @@ export interface GlobalAppContextPropsInterface {
   productDetails: {
     productData: ProductDataInterface[];
   };
-  addressVal: {
+  adressDetails: {
     addressList: AddressInterface[];
   };
   checkedState: boolean[];
   changeCheckedState: (index: number) => void;
   currentStep: number;
   changeCurrentStep: (step: number) => void;
-  currentAddress: boolean[];
-  changeCurrentAdress: (index: number) => void;
+  currentAddress: number;
+  changeCurrentAdress: (index: number, isChecked: boolean) => void;
   addNewAdress: (address: AddressInterface) => void;
   addOrDeleteItem: (
     id: number,
     type: 'delete' | 'alter',
-    sign: '+' | '-'
+    sign: '+' | '-',
+    index: number
   ) => void;
   successLoader: boolean;
   purchaseItem: () => void;

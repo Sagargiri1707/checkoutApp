@@ -61,7 +61,9 @@ function Product({
               {itemPrice.percentageOff}% off
             </span>
             {itemPrice.offersAvailable.count > 0 ? (
-              <span>{itemPrice.offersAvailable.count} offers available</span>
+              <span className="pl-2 text-sm text-gray-400	">
+                {itemPrice.offersAvailable.count} offers available
+              </span>
             ) : null}
           </div>
         </div>

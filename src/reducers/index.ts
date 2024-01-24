@@ -3,7 +3,7 @@ import * as Actions from './Actions';
 export const initState = {
   productDetails: { productData: [], loading: false },
   adressDetails: { addressList: [] },
-  currentAddress: [],
+  currentAddress: -1,
   currentStep: 0,
   checkedState: [],
   successLoader: false,
