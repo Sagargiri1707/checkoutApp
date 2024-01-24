@@ -1,4 +1,4 @@
 Checkout page
 
 todo test cases
-themeing
+error boundary

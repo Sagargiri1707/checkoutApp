@@ -83,18 +83,19 @@ const App: React.FC = () => {
       .then(res => {
         dispatch({
           type: Actions.FETCH_PRODUCT_DATA_SUCCESS,
-          payload: { ...res, loading: false },
+          payload: { ...res.data.RESPONSE, loading: false },
         });
         dispatch({
           type: Actions.SET_CHECKED_STATE,
-          payload: Array(res.productData.length).fill(false),
+          payload: Array(res.data.RESPONSE.productData.length).fill(false),
         });
       })
-      .catch(_ => {
+      .catch(err => {
         toast.error('Failed in fetching api product list');
       });
     getAddressList()
       .then(res => {
+        console.log({ res });
         dispatch({
           type: Actions.SET_ADDRESS_DATA,
           payload: res,
@@ -200,6 +201,7 @@ const App: React.FC = () => {
         });
       });
   }
+  console.log(state);
   return (
     <BrowserRouter>
       <Navbar />
