@@ -9,7 +9,7 @@ export const initState = {
   successLoader: false,
 };
 
-export const eventsReducer = (state:any, { type, payload }):any => {
+export const eventsReducer = (state: any, { type, payload }): any => {
   switch (type) {
     case Actions.FETCH_PRODUCT_DATA_START: {
       return {
@@ -42,35 +42,35 @@ export const eventsReducer = (state:any, { type, payload }):any => {
         adressDetails: { ...state.adressDetails, ...payload },
       };
     }
-    case Actions.SET_CURRENT_ADDRESS:{
+    case Actions.SET_CURRENT_ADDRESS: {
       return {
         ...state,
-        currentAddress:payload
+        currentAddress: payload,
       };
     }
-    case Actions.SET_CURRENT_STEP:{
+    case Actions.SET_CURRENT_STEP: {
       return {
         ...state,
-        currentStep:payload
+        currentStep: payload,
       };
     }
-    case Actions.SET_CHECKED_STATE:{
+    case Actions.SET_CHECKED_STATE: {
       return {
         ...state,
-        checkedState:payload
+        checkedState: payload,
       };
     }
-    case Actions.START_SUCCESS_LOADER:{
-return {
-  ...state,
-  successLoader:true
-};
+    case Actions.START_SUCCESS_LOADER: {
+      return {
+        ...state,
+        successLoader: true,
+      };
     }
-    case Actions.END_SUCCESS_LOADER:{
-return {
-  ...state,
-  successLoader: false,
-};
+    case Actions.END_SUCCESS_LOADER: {
+      return {
+        ...state,
+        successLoader: false,
+      };
     }
     default:
       return state;

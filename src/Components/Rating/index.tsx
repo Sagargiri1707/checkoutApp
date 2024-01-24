@@ -1,9 +1,6 @@
-interface RatingProps {
-  average: number;
-  count: number;
-}
+import { RatingPropsInterface } from '../../Types';
 
-function Rating(props: RatingProps) {
+function Rating(props: RatingPropsInterface) {
   return (
     <div className="flex items-center">
       <svg

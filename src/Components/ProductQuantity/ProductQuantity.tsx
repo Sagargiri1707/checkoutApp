@@ -1,11 +1,4 @@
-interface ProductQuantityProps {
-  index: number;
-  onChange: (
-    event: React.MouseEvent<HTMLButtonElement>,
-    action: string
-  ) => void;
-}
-
+import { ProductQuantityProps } from '../../Types';
 function ProductQuantity({ index, onChange }: ProductQuantityProps) {
   return (
     <div className="flex items-center justify-center w-12 bg-white rounded-md">

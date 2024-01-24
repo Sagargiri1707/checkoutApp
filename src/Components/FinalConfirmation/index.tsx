@@ -42,6 +42,14 @@ function FinalConfirmation() {
           </span>
         </div>
       </div>
+      <div className="bg-white p-4 rounded shadow-md">
+        <p className="text-xl font-bold mb-2">Address:</p>
+        <p className="text-gray-700">
+          {'street'}
+          <br />
+          {'city'}, {'state'} {'postalCode'}
+        </p>
+      </div>
     </div>
   );
 }

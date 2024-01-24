@@ -9,6 +9,10 @@ module.exports = {
           default: '#131921',
         },
       },
+      height: {
+        144: '44rem',
+        128: '38rem',
+      },
     },
   },
   plugins: [],

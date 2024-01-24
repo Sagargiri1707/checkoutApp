@@ -9,68 +9,8 @@ import { getProductList, getAddressList, completePurchase } from './Utils';
 import { toast } from 'react-toastify';
 import { eventsReducer, initState } from './reducers/index';
 import * as Actions from './reducers/Actions';
-interface Media {
-  type: string;
-  url: string;
-}
+import { AddressInterface } from './Types';
 
-interface RatingValue {
-  type: string;
-  average: number;
-  base: number;
-  count: number;
-  roundOffCount: string;
-}
-
-interface Titles {
-  subtitle: string;
-  title: string;
-}
-
-interface DeliveryDetails {
-  eta: string;
-  deliveryCharge: string;
-  isdeliveryChargeWaived: boolean;
-  isFasterDeliveryAvailable: boolean;
-  time: number;
-}
-
-interface SellerDetails {
-  name: string;
-}
-
-interface ItemPrice {
-  originalPrice: number;
-  discountedPrice: number;
-  percentageOff: number;
-  offersAvailable: {
-    count: number;
-  };
-}
-
-interface ProductData {
-  id: number;
-  media: Media;
-  quantity: number;
-  ratingValue: RatingValue;
-  titles: Titles;
-  deliveryDetails: DeliveryDetails;
-  sellerDetails: SellerDetails;
-  itemPrice: ItemPrice;
-}
-
-interface Address {
-  id: number;
-  city: string;
-  isDefault: boolean;
-  landmark: string;
-  locationTypeTag: string;
-  name: string;
-  phone: string;
-  pincode: string;
-  state: string;
-  address: string;
-}
 const App: React.FC = () => {
   const [state, dispatch] = useReducer(eventsReducer, initState);
 
@@ -95,7 +35,6 @@ const App: React.FC = () => {
       });
     getAddressList()
       .then(res => {
-        console.log({ res });
         dispatch({
           type: Actions.SET_ADDRESS_DATA,
           payload: res,
@@ -132,25 +71,36 @@ const App: React.FC = () => {
       }),
     });
   }
-  function addNewAdress(address: Address) {
+  function addNewAdress(address: AddressInterface) {
+    const newAddress = [...state.adressDetails.addressList, address];
     dispatch({
       type: Actions.SET_ADDRESS_DATA,
-      payload: { addressList: [...state.adressDetails.addressList, address] },
+      payload: { addressList: newAddress },
+    });
+    dispatch({
+      type: Actions.SET_CURRENT_ADDRESS,
+      payload: state.currentAddress.concat(false),
     });
   }
   function addOrDeleteItem(
     id: number,
     type: 'delete' | 'alter',
-    sign: '+' | '-'
+    sign: '+' | '-',
+    index: number
   ) {
     if (type === 'delete') {
+      const updatedState = state.productDetails.productData.filter(
+        (productData: { id: number }) => productData.id !== id
+      );
       dispatch({
         type: Actions.SET_PRODUCT_DATA,
         payload: {
-          productData: state.productDetails.productData.filter(
-            productData => productData.id !== id
-          ),
+          productData: updatedState,
         },
+      });
+      dispatch({
+        type: Actions.SET_CHECKED_STATE,
+        payload: state.checkedState.filter((el, id: number) => id !== index),
       });
     }
     if (type === 'alter') {
@@ -201,7 +151,6 @@ const App: React.FC = () => {
         });
       });
   }
-  console.log(state);
   return (
     <BrowserRouter>
       <Navbar />

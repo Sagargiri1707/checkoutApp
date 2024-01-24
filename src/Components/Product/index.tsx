@@ -3,43 +3,7 @@ import Rating from '../Rating';
 import ProductQuantity from '../ProductQuantity/ProductQuantity';
 import { useContext } from 'react';
 import { GlobalAppContext } from '../../Context/Context';
-interface ProductProps {
-  id: number;
-  index: number;
-  media: {
-    type: string;
-    url: string;
-  };
-  titles: {
-    title: string;
-    subtitle: string;
-  };
-  sellerDetails: {
-    name: string;
-  };
-  itemPrice: {
-    originalPrice: number;
-    discountedPrice: number;
-    percentageOff: number;
-    offersAvailable: {
-      count: number;
-    };
-  };
-  deliveryDetails: {
-    eta: string;
-    deliveryCharge: string;
-    isdeliveryChargeWaived: boolean;
-    isFasterDeliveryAvailable: boolean;
-  };
-  ratingValue: {
-    type: string;
-    average: number;
-    base: number;
-    count: number;
-    roundOffCount: string;
-  };
-  quantity: number;
-}
+import { ProductProps } from '../../Types';
 
 function Product({
   id,
@@ -60,7 +24,7 @@ function Product({
     a: '+' | '-'
   ) {
     const type = a === '-' || a === '+' ? 'alter' : 'delete';
-    addOrDeleteItem(id, type, a);
+    addOrDeleteItem(id, type, a, index);
   }
   return (
     <div className="border-2 m-2 mt-6 w-2/3 p-6 relative">
@@ -113,9 +77,6 @@ function Product({
             >
               {deliveryDetails.deliveryCharge} Delivery charge
             </div>
-            {deliveryDetails.isFasterDeliveryAvailable && (
-              <span>If ordered within timer component</span>
-            )}
           </div>
           {ratingValue && <Rating {...ratingValue} />}
           <div className="flex justify-between mt-8">

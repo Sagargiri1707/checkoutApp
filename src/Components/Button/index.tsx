@@ -1,14 +1,5 @@
-import { MouseEventHandler } from 'react';
+import { ButtonPropsInterface } from '../../Types'
 
-interface ButtonProps {
-  text: string;
-  onChange: (e: MouseEventHandler<HTMLButtonElement>, id: string) => void;
-  id: number;
-  type?: 'button' | 'submit' | 'reset';
-  color?: string;
-  disabled?: boolean;
-  customClass?: string;
-}
 function Button({
   text,
   onChange,
@@ -17,7 +8,7 @@ function Button({
   color,
   disabled,
   customClass,
-}: ButtonProps) {
+}: ButtonPropsInterface) {
   return (
     <button
       type={type || 'button'}

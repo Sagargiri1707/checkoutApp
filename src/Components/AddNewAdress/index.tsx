@@ -1,20 +1,12 @@
-import { useState } from 'react';
+import { EventHandler, MouseEventHandler, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useContext } from 'react';
 import { GlobalAppContext } from '../../Context/Context';
-interface FormState {
-  name: string;
-  address: string;
-  phone: string;
-  state: string;
-  city: string;
-  pincode: string;
-  landmark: string;
-}
+import { AddressInterface } from '../../Types';
 
 function AddNewAdress() {
   const { addNewAdress } = useContext(GlobalAppContext);
-  const [formState, setFormState] = useState<FormState>({
+  const [formState, setFormState] = useState<AddressInterface>({
     name: '',
     address: '',
     phone: '',
@@ -25,7 +17,7 @@ function AddNewAdress() {
   });
   const PHONE_REGEX = /^([0]|\+91)?([6-9][0-9]{9})$/;
   const PINCODE_REGEX = /^[1-9][0-9]{5}$/;
-  function submitForm(e) {
+  function submitForm(e: any) {
     e.preventDefault();
     if (!PHONE_REGEX.test(formState.phone)) {
       return toast.error('Invalid Phone number given');
@@ -37,6 +29,7 @@ function AddNewAdress() {
         ...formState,
         id: Math.random() * 1000,
         isDefault: false,
+        locationTypeTag: 'Others',
       });
     setFormState({
       name: '',
@@ -48,7 +41,7 @@ function AddNewAdress() {
       landmark: '',
     });
   }
-  function handleFormChange(data) {
+  function handleFormChange(data: any) {
     setFormState(prevState => ({
       ...prevState,
       [data.target.id]: data.target.value,

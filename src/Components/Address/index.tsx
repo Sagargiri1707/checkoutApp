@@ -1,15 +1,4 @@
-interface AddressProps {
-  isSelected: boolean;
-  index: number;
-  name: string;
-  address: string;
-  isDefault: boolean;
-  landmark: string;
-  state: string;
-  pincode: string;
-  city: string;
-  onChange: (index: number) => void;
-}
+import { AddressProps } from '../../Types';
 function Address({
   isSelected,
   index,
@@ -19,6 +8,7 @@ function Address({
   isDefault,
   landmark,
   state,
+  phone,
   pincode,
   onChange,
 }: AddressProps) {
@@ -30,11 +20,14 @@ function Address({
         onChange={() => onChange(index)}
         className="rounded mr-2 left-4 top-4 h-4 w-4"
       />
-      <div className="flex justify-center items-center w-10 h-10 rounded-full bg-gray-300">
-        {name[0]}
+      <div>
+        <div className="flex justify-center items-center w-10 h-10 rounded-full bg-gray-300">
+          {name[0]}
+        </div>
       </div>
       <div className="text-sm font-medium w-8/12 truncate">
         <span className="block mb-2">{name}</span>
+        <p className="text-xs text-gray-500 mb-1">{phone}</p>
         <span className="text-gray-500 text-sm font-light">{address}</span>
         <div className="text-gray-500 w-full font-light truncate">
           {landmark}
