@@ -53,7 +53,7 @@ function Product({ id, index, media, titles, sellerDetails, itemPrice, deliveryD
         <div className="border-2 m-2 mt-6 w-2/3 p-6 relative">
             <input
                 type="checkbox"
-                checked={checkedState[id]}
+                checked={checkedState[index]}
                 onChange={(e) => changeCheckedState(index)}
                 className="rounded mr-2 absolute left-4 top-4 h-4 w-4"
             />
@@ -69,8 +69,10 @@ function Product({ id, index, media, titles, sellerDetails, itemPrice, deliveryD
                     <div className="font-light	text-slate-400 text-sm">{titles.subtitle}</div>
                     <div className="font-light	text-slate-400 text-sm">{sellerDetails.name}</div>
                     <div>
-                        <span className="font-light	text-neutral-500 text-sm line-through">{itemPrice.originalPrice}</span>
-                        <span className="font-bold	text-green-500 text-lg">{itemPrice.discountedPrice} {itemPrice.percentageOff}% off</span>
+                        <span className="font-light	text-neutral-500 text-sm line-through">₹{itemPrice.originalPrice}</span>
+                        <span className="font-bold	text-green-500 text-lg">₹{itemPrice.discountedPrice} 
+                        </span><span className="font-bold	text-green-500 text-lg ml-4">
+                            {itemPrice.percentageOff}% off</span>
                         {itemPrice.offersAvailable.count > 0 ? <span>{itemPrice.offersAvailable.count
                         } offers available</span> : null}
                     </div>

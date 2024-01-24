@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Home from './Pages/Home';
 import { GlobalAppContext } from './Context/Context'
 import { ToastContainer } from "react-toastify";
 
-import initVal from './ApiResponses/CheckoutApiResponse.json'
 import addressVal from './ApiResponses/AddressListResponse.json'
 import "react-toastify/dist/ReactToastify.min.css";
+import { getProductList, getAddressList, completePurchase } from './Utils'
+import { toast } from "react-toastify";
 
 interface Media {
   type: string;
@@ -72,30 +73,49 @@ interface Address {
   address: string;
 }
 const App: React.FC = () => {
+  useEffect(() => {
+    setProductDetails({...productDetails,loading:true})
+    getProductList().then((res) => {
+      setProductDetails({...res,loading:false})
+      setCheckedState(Array(res.productData.length).fill(false))
+    }).catch(_ => {
+      toast.error("Failed in fetching api product list")
+    })
+    getAddressList().then((res) => {
+      setAdressDetails(res)
+      setCurrentAddress(res.addressList.map(adress => adress.isDefault))
+    }).catch(err => {
+
+    })
+  }, [])
+
+
+
   const [productDetails, setProductDetails] = useState<{
+    loading: boolean,
     productData: ProductData[];
-  }>(initVal)
+  }>({ productData: [],loading: false })
   const [checkedState, setCheckedState] = useState<boolean[]>(Array(productDetails.productData.length).fill(false))
   const [currentStep, setCurrentStep] = useState<number>(0)
   const [adressDetails, setAdressDetails] = useState<{ addressList: Address[] }>(addressVal)
 
   const [currentAddress, setCurrentAddress] = useState<boolean[]>(adressDetails.addressList.map(adress => adress.isDefault))
-  function changeCheckedState(index:number) {
+  function changeCheckedState(index: number) {
     setCheckedState(checkedState.map((state, id) => {
       if (id === index) return !state
       else return state
     }))
   }
-  function changeCurrentStep(step:number) {
+  function changeCurrentStep(step: number) {
     setCurrentStep(step)
   }
-  function changeCurrentAdress(index:number) {
+  function changeCurrentAdress(index: number) {
     setCurrentAddress(currentAddress.map((adress, id) => {
       if (id === index) return !adress
       else return false
     }))
   }
-  function addNewAdress(address:Address) {
+  function addNewAdress(address: Address) {
     setAdressDetails(prevState => {
       return { ...prevState, addressList: [...prevState.addressList, address] }
     })
@@ -121,6 +141,16 @@ const App: React.FC = () => {
       })
     }
   }
+  function purchaseItem() {
+    completePurchase().then(res => {
+      toast.success(res.msg)
+      changeCurrentStep(0)
+      setProductDetails({ productData: [] })
+    })
+      .catch(err => {
+        toast.error(err.msg)
+      })
+  }
   return (
     <BrowserRouter>
       <Navbar />
@@ -131,7 +161,7 @@ const App: React.FC = () => {
         role="alert"
         closeOnClick
       />
-      <GlobalAppContext.Provider value={{ productDetails, addressVal: adressDetails, checkedState, changeCheckedState, currentStep, changeCurrentStep, currentAddress, changeCurrentAdress, addNewAdress, addOrDeleteItem }}>
+      <GlobalAppContext.Provider value={{ productDetails, addressVal: adressDetails, checkedState, changeCheckedState, currentStep, changeCurrentStep, currentAddress, changeCurrentAdress, addNewAdress, addOrDeleteItem, purchaseItem }}>
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>
