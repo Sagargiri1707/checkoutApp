@@ -38,7 +38,7 @@ function Product({
         className="rounded mr-2 absolute left-4 top-4 h-4 w-4"
       />
       <div className="flex flex-col lg:flex-row justify-between items-center lg:items-stretch	">
-      <div className="lg:w-1/3 h-48 mb-4 lg:mb-0">
+        <div className="lg:w-1/3 h-48 mb-4 lg:mb-0">
           {media?.type === 'image' ? (
             <img className=" h-full w-auto" src={media?.url} />
           ) : (
@@ -46,11 +46,15 @@ function Product({
           )}
         </div>
         <div className="lg:w-1/2 lg:ml-4 p-1">
-          <div className="font-semibold text-lg">{titles?.title}</div>
-          <div className="font-light hidden lg:block	text-slate-400 text-sm">
+          <div className="font-semibold text-lg ">
+            {titles?.title.length > 70
+              ? titles?.title.slice(0, 70) + ' ...'
+              : titles.title}
+          </div>
+          <div className="font-light hidden lg:inline	text-slate-400 text-sm">
             {titles?.subtitle}
           </div>
-          <div className="font-light  hidden lg:block	text-slate-500 text-sm">
+          <div className="font-light  hidden lg:inline	text-slate-500 text-sm">
             {sellerDetails?.name}
           </div>
           <div>
@@ -70,35 +74,35 @@ function Product({
             ) : null}
           </div>
         </div>
-        <div className="w-full lg:w-3/12 flex lg:block align-between md:justify-evenly	 md:items-baseline flex-wrap	justify-center">
+        <div className="w-full lg:w-3/12 flex lg:inline align-between lg:justify-evenly p-2 lg:items-baseline flex-wrap	justify-center">
           <div className="mb-4 w-44">
             <span>Delivery by {deliveryDetails?.eta}</span>
-            {
-              (deliveryDetails?.isFasterDeliveryAvailable && deliveryDetails.time) ? <DeliveryMessage seconds={deliveryDetails?.time}/> : null
-            }
-            
+            {deliveryDetails?.isFasterDeliveryAvailable &&
+            deliveryDetails.time ? (
+              <DeliveryMessage seconds={deliveryDetails?.time} />
+            ) : null}
+
             <div
               className={
                 deliveryDetails?.isdeliveryChargeWaived
-                  ? 'text-green-500 font-semibold line-through  hidden lg:block text-sm'
-                  : ' hidden lg:block'
+                  ? 'text-green-500 font-semibold line-through mt-2 hidden lg:inline text-sm'
+                  : ' hidden lg:inline'
               }
             >
               {deliveryDetails?.deliveryCharge} Delivery charge
             </div>
           </div>
           {ratingValue && <Rating {...ratingValue} />}
-          <div className="flex justify-between w-44 mt-8">
+          <div className="flex justify-between items-center w-44 mt-8">
             <ProductQuantity index={quantity} onChange={changeCartVolume} />
             <div>
-            <Button
-              text={'Delete'}
-              id={id}
-              onChange={changeCartVolume}
-              color="rose"
-            />
+              <Button
+                text={'Delete'}
+                id={id}
+                onChange={changeCartVolume}
+                color="rose"
+              />
             </div>
-          
           </div>
         </div>
       </div>

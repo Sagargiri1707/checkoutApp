@@ -11,8 +11,8 @@ import { eventsReducer, initState } from './reducers/index';
 import * as Actions from './reducers/Actions';
 import { AddressInterface } from './Types';
 import './App.css';
-const Arch = lazy(() => import('./Pages/Architecture'));
-const Test = lazy(() => import('./Pages/TestCase'));
+const Architecture = lazy(() => import('./Pages/Architecture'));
+const TestReports = lazy(() => import('./Pages/TestCase'));
 
 const App: React.FC = () => {
   const [state, dispatch] = useReducer(eventsReducer, initState);
@@ -177,12 +177,12 @@ const App: React.FC = () => {
         }}
       >
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Suspense fallback={<div>loading</div>}><Home /></Suspense>} />
           <Route
             path="/architecture"
             element={
               <Suspense fallback={<div>loading</div>}>
-                <Arch />
+                <Architecture />
               </Suspense>
             }
           />
@@ -190,7 +190,7 @@ const App: React.FC = () => {
             path="/testcase"
             element={
               <Suspense fallback={<div>loading</div>}>
-                <Test />
+                <TestReports />
               </Suspense>
             }
           />
