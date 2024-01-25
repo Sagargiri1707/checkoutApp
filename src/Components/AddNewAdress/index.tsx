@@ -70,6 +70,7 @@ function AddNewAdress() {
                 onChange={handleFormChange}
                 type="text"
                 id="name"
+                placeholder='Please enter your name'
                 className="rounded border border-gray-300 px-4 py-2 focus:ring focus:ring-blue-200"
                 required={true}
               />
@@ -83,6 +84,8 @@ function AddNewAdress() {
                 onChange={handleFormChange}
                 type="text"
                 id="address"
+                placeholder='Please enter Address'
+
                 className="rounded border border-gray-300 px-4 py-2 focus:ring focus:ring-blue-200"
                 required={true}
               />
@@ -98,6 +101,8 @@ function AddNewAdress() {
                 maxLength={13}
                 type="text"
                 id="phone"
+                placeholder='+91XXXXXXXXXX'
+
                 className="rounded border border-gray-300 px-4 py-2 focus:ring focus:ring-blue-200"
                 required={true}
               />
@@ -111,6 +116,8 @@ function AddNewAdress() {
                 onChange={handleFormChange}
                 type="text"
                 id="city"
+                placeholder='Please enter city'
+
                 className="rounded border border-gray-300 px-4 py-2 focus:ring focus:ring-blue-200"
                 required={true}
               />
@@ -123,6 +130,8 @@ function AddNewAdress() {
                 value={formState.state}
                 onChange={handleFormChange}
                 type="text"
+                placeholder='Please enter state'
+
                 id="state"
                 className="rounded border border-gray-300 px-4 py-2 focus:ring focus:ring-blue-200"
                 required={true}
@@ -133,15 +142,16 @@ function AddNewAdress() {
                 htmlFor="landmark"
                 className="text-base text-gray-700 mb-2"
               >
-                Landmark
+                Landmark (Optional)
               </label>
               <input
                 value={formState.landmark}
                 onChange={handleFormChange}
                 type="text"
                 id="landmark"
+                placeholder='Please enter any landmark'
                 className="rounded border border-gray-300 px-4 py-2 focus:ring focus:ring-blue-200"
-                required={true}
+                required={false}
               />
             </div>
             <div className="flex flex-col mb-1">
@@ -155,6 +165,8 @@ function AddNewAdress() {
                 minLength={6}
                 maxLength={6}
                 id="pincode"
+                placeholder='Please enter pincode'
+
                 className="rounded border border-gray-300 px-4 py-2 focus:ring focus:ring-blue-200"
                 required={true}
               />
