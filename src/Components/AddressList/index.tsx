@@ -6,10 +6,10 @@ function AddressList() {
   const { adressDetails, currentAddress, changeCurrentAdress } =
     useContext(GlobalAppContext);
   return (
-    <div className="w-auto flex h-144 items-baseline	 justify-center">
+    <div className="w-auto flex-col lg:flex lg:flex-row h-auto lg:h-144 items-baseline	 justify-center">
       <div className="flex flex-col items-center justify-center">
         <h4>Select an address to proceed</h4>
-        <div className="h-128 overflow-auto">
+        <div className="h-96 lg:h-auto p-4 lg:p-0 lg:h-128 overflow-auto">
           {adressDetails.addressList.map((address, id) => {
             return (
               <Address

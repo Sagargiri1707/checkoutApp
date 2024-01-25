@@ -2,7 +2,7 @@ import { RatingPropsInterface } from '../../Types';
 
 function Rating(props: RatingPropsInterface) {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center w-44">
       <svg
         className="w-4 h-4 text-yellow-300 me-1"
         aria-hidden="true"

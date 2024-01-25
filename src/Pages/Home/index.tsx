@@ -79,7 +79,7 @@ function Home() {
   }
   return (
     <div className="max-w-44">
-      <div className="relative md:container md:mx-auto p-4 m-16 mt-12 border flex-col items-center justify-center flex">
+      <div className="relative lg:container md:mx-auto p-4 m-4  mt-2 md:mt-12   flex-col items-center justify-center flex">
         {currentStep !== 0 && (
           <button
             className="absolute left-0 top-0 bg-blue-300 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transform scale-x-[-1]"

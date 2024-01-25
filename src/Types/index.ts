@@ -22,8 +22,8 @@ export interface AddressInterface {
 
 export interface ButtonPropsInterface {
   text: string;
-  onChange: (e: MouseEventHandler<HTMLButtonElement>, id: string) => void;
-  id: number;
+  onChange?: (e: MouseEventHandler<HTMLButtonElement>, id: string) => void;
+  id?: number;
   type?: 'button' | 'submit' | 'reset';
   color?: string;
   disabled?: boolean;

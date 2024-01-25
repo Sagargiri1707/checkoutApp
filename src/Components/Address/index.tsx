@@ -13,7 +13,7 @@ function Address({
   onChange,
 }: AddressProps) {
   return (
-    <div className="mt-4 w-96 flex items-center justify-evenly px-4 py-2 bg-gray-100 rounded-md shadow-sm flex items-center space-x-4">
+    <div className="mt-4 w-auto lg:w-96 flex items-center justify-evenly px-4 py-2 bg-gray-100 rounded-md shadow-sm flex items-center space-x-4">
       <input
         type="checkbox"
         checked={isSelected}
