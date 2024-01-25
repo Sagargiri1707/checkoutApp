@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Home from './Pages/Home';
@@ -10,6 +10,9 @@ import { toast } from 'react-toastify';
 import { eventsReducer, initState } from './reducers/index';
 import * as Actions from './reducers/Actions';
 import { AddressInterface } from './Types';
+import './App.css';
+const Arch = lazy(() => import('./Pages/Architecture'));
+const Test = lazy(() => import('./Pages/TestCase'));
 
 const App: React.FC = () => {
   const [state, dispatch] = useReducer(eventsReducer, initState);
@@ -175,6 +178,22 @@ const App: React.FC = () => {
       >
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route
+            path="/architecture"
+            element={
+              <Suspense fallback={<div>loading</div>}>
+                <Arch />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/testcase"
+            element={
+              <Suspense fallback={<div>loading</div>}>
+                <Test />
+              </Suspense>
+            }
+          />
         </Routes>
       </GlobalAppContext.Provider>
     </BrowserRouter>

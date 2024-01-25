@@ -1,9 +1,11 @@
+import React, { useContext, lazy, Suspense } from 'react';
 import ProductList from '../../Components/ProductList';
-import React, { useContext } from 'react';
 import { GlobalAppContext } from '../../Context/Context';
-import Button from '../../Components/Button';
-import Address from '../../Components/AddressList';
-import FinalConfirmation from '../../Components/FinalConfirmation';
+const Button = lazy(() => import('../../Components/Button'));
+const Address = lazy(() => import('../../Components/AddressList'));
+const FinalConfirmation = lazy(
+  () => import('../../Components/FinalConfirmation')
+);
 function Home() {
   const {
     currentStep,
@@ -35,7 +37,9 @@ function Home() {
     if (!step || step === 0) {
       return (
         <React.Fragment>
-          <ProductList />
+          <Suspense fallback={<div>Loading</div>}>
+            <ProductList />
+          </Suspense>
           {productDetails.productData.length !== 0 && (
             <Button
               text={text}
@@ -50,7 +54,10 @@ function Home() {
     } else if (step === 1) {
       return (
         <React.Fragment>
-          <Address />
+          <Suspense fallback={<div>Loading</div>}>
+            <Address />
+          </Suspense>
+
           <Button
             text={text}
             disabled={!isBtnDisabled}
@@ -63,7 +70,9 @@ function Home() {
     } else if (step === 2) {
       return (
         <React.Fragment>
-          <FinalConfirmation />
+          <Suspense fallback={<div>Loading</div>}>
+            <FinalConfirmation />
+          </Suspense>
           <Button
             text={successLoader ? 'Loading' : text}
             disabled={false}

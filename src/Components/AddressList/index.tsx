@@ -13,7 +13,7 @@ function AddressList() {
           {adressDetails.addressList.map((address, id) => {
             return (
               <Address
-                key={address.id}
+                key={id}
                 index={id}
                 isSelected={currentAddress === id}
                 onChange={changeCurrentAdress}

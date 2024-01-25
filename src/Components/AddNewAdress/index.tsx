@@ -22,7 +22,6 @@ function AddNewAdress() {
   });
   function submitForm(e: any) {
     e.preventDefault();
-
     if (!PHONE_REGEX.test(formState.phone)) {
       return toast.error('Invalid Phone number given');
     }
@@ -31,7 +30,6 @@ function AddNewAdress() {
     } else
       addNewAdress({
         ...formState,
-        id: Math.random() * 1000,
         isDefault: false,
         locationTypeTag: 'Others',
       });
@@ -58,7 +56,6 @@ function AddNewAdress() {
         <h2 className="text-lg font-bold text-gray-700 mb-4">
           Instead Add a new Address
         </h2>
-        {console.log(addANewAdress)}
         {addANewAdress ? (
           <form onSubmit={submitForm}>
             <div className="flex flex-col mb-1">

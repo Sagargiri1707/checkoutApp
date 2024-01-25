@@ -25,7 +25,6 @@ function FinalConfirmation() {
   return (
     <div className="mx-auto lg:w-96 w-full h:w-96 mt-8 mb-8 shadow-md">
       <h2 className="text-2xl font-bold mb-4">Checkout</h2>
-
       <div className="border-t border-b py-2">
         <div className="flex justify-between">
           <span>Product Price:</span>

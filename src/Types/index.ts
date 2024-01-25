@@ -146,6 +146,7 @@ export interface ProductProps {
     deliveryCharge: string;
     isdeliveryChargeWaived: boolean;
     isFasterDeliveryAvailable: boolean;
+    time: number;
   };
   ratingValue: {
     type: string;
