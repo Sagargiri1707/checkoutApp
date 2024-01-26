@@ -5,7 +5,7 @@ import Architecture from '../Architecture';
 
 describe('navbar component', () => {
   it('should render a header ', () => {
-    render(<Architecture />);
-    expect(screen).toMatchSnapshot();
+    const container = render(<Architecture />);
+    expect(container).toMatchSnapshot();
   });
 });

@@ -16,10 +16,10 @@ function Navbar() {
               <div className="mt-7 text-xs xl:text-sm font-bold">Architecture</div>
             </div>
           </Link>
-          <Link to={"/testcase"}>
+          <Link to={"/report"}>
 
             <div className="flex pr-3 pl-3">
-              <div className="mt-7 text-xs xl:text-sm font-bold">Test case</div>
+              <div className="mt-7 text-xs xl:text-sm font-bold">Reports</div>
             </div>
         </Link>
         </div>

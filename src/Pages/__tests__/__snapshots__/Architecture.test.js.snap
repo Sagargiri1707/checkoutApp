@@ -2,6 +2,593 @@
 
 exports[`navbar component should render a header  1`] = `
 Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="container mx-auto w-128 "
+      >
+        <div
+          class="mt-4"
+        >
+          <h3
+            class="mb-2 text-lg font-semibold text-gray-900 dark:text-white"
+          >
+            Partners in the project
+          </h3>
+          <ul
+            class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+          >
+            <li
+              class="flex items-center"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Frontend: React JS
+            </li>
+            <li
+              class="flex items-center"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Styling: Tailwind css
+            </li>
+            <li
+              class="flex items-center"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Testing: React testing library
+            </li>
+            <li
+              class="flex items-center"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Testing: React testing library
+            </li>
+            <li
+              class="flex items-center"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                />
+              </svg>
+              Deployment : Vercel
+            </li>
+          </ul>
+        </div>
+        <div
+          class="mt-4"
+        >
+          <h3
+            class="mb-2 text-lg font-semibold text-gray-900 dark:text-white"
+          >
+            Data Flow
+          </h3>
+          <div
+            class="flex flex-col space-y-4 p-4"
+          >
+            <div
+              class="flex font-sm items-center"
+            >
+              <span
+                class="text-green-500 mr-2"
+              >
+                ✓
+              </span>
+              <span
+                class="font-bold"
+              >
+                You load the page
+              </span>
+            </div>
+            <div
+              class="flex font-sm items-center"
+            >
+              <span
+                class="text-green-500 mr-2"
+              >
+                ✓
+              </span>
+              <span
+                class="font-bold"
+              >
+                App gets rendered and api call is being made
+              </span>
+            </div>
+            <div
+              class="flex font-sm items-center"
+            >
+              <span
+                class="text-green-500 mr-2"
+              >
+                ✓
+              </span>
+              <span
+                class="font-bold"
+              >
+                Data is fetched from the Api via actions and stored in context via reducer
+              </span>
+            </div>
+            <div
+              class="flex font-sm items-center"
+            >
+              <span
+                class="text-green-500 mr-2"
+              >
+                ✓
+              </span>
+              <span
+                class="font-bold"
+              >
+                Home Page then renders the cart component ,based on the data from context, where you can add/remove/select items to purchase
+              </span>
+            </div>
+            <div
+              class="flex font-sm items-center"
+            >
+              <span
+                class="text-green-500 mr-2"
+              >
+                ✓
+              </span>
+              <span
+                class="font-bold"
+              >
+                Button gets disabled / enabled based on items you select
+              </span>
+            </div>
+            <div
+              class="flex font-sm items-center"
+            >
+              <span
+                class="text-green-500 mr-2"
+              >
+                ✓
+              </span>
+              <span
+                class="font-bold"
+              >
+                On further steps you have option to select address or add a new address
+              </span>
+            </div>
+            <div
+              class="flex font-sm items-center"
+            >
+              <span
+                class="text-green-500 mr-2"
+              >
+                ✓
+              </span>
+              <span
+                class="font-bold"
+              >
+                You may add a new address which will post be shown in the adress list
+              </span>
+            </div>
+            <div
+              class="flex font-sm items-center"
+            >
+              <span
+                class="text-green-500 mr-2"
+              >
+                ✓
+              </span>
+              <span
+                class="font-bold"
+              >
+                On next step you will have an option to check the price and adress and submit it
+              </span>
+            </div>
+            <div
+              class="flex font-sm items-center"
+            >
+              <span
+                class="text-green-500 mr-2"
+              >
+                ✓
+              </span>
+              <span
+                class="font-bold"
+              >
+                On Api success , a success toast will be shown with success message and cart becomes empty
+              </span>
+            </div>
+            <div
+              class="flex font-sm items-center"
+            >
+              <span
+                class="text-green-500 mr-2"
+              >
+                ✓
+              </span>
+              <span
+                class="font-bold"
+              >
+                On failure you will be at the same page and left with an option to retry
+              </span>
+            </div>
+            <div
+              class="flex font-sm items-center"
+            >
+              <span
+                class="text-green-500 mr-2"
+              >
+                ✓
+              </span>
+              <span
+                class="font-bold"
+              >
+                Thats the end :)
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mt-4"
+        >
+          <h3
+            class="mb-2 text-lg font-semibold text-gray-900 dark:text-white"
+          >
+            HLD Diagram
+          </h3>
+          <img
+            alt="design diagrams"
+            src="https://rukminim1.flixcart.com/www/800/800/promos/26/01/2024/04b6c585-1a76-475a-a2ee-34cfe0806242.png?q=100"
+          />
+        </div>
+        <div
+          class="mt-4"
+        >
+          <h3
+            class="mb-2 text-lg font-semibold text-gray-900 dark:text-white"
+          >
+            Data Flow in the project
+          </h3>
+          <img
+            alt="data flow"
+            src="https://rukminim1.flixcart.com/www/1000/1000/promos/26/01/2024/c43eae7a-3773-4361-9e2f-fb7fbc3be3a9.png?q=100"
+          />
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="container mx-auto w-128 "
+    >
+      <div
+        class="mt-4"
+      >
+        <h3
+          class="mb-2 text-lg font-semibold text-gray-900 dark:text-white"
+        >
+          Partners in the project
+        </h3>
+        <ul
+          class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+        >
+          <li
+            class="flex items-center"
+          >
+            <svg
+              aria-hidden="true"
+              class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+              />
+            </svg>
+            Frontend: React JS
+          </li>
+          <li
+            class="flex items-center"
+          >
+            <svg
+              aria-hidden="true"
+              class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+              />
+            </svg>
+            Styling: Tailwind css
+          </li>
+          <li
+            class="flex items-center"
+          >
+            <svg
+              aria-hidden="true"
+              class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+              />
+            </svg>
+            Testing: React testing library
+          </li>
+          <li
+            class="flex items-center"
+          >
+            <svg
+              aria-hidden="true"
+              class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+              />
+            </svg>
+            Testing: React testing library
+          </li>
+          <li
+            class="flex items-center"
+          >
+            <svg
+              aria-hidden="true"
+              class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+              />
+            </svg>
+            Deployment : Vercel
+          </li>
+        </ul>
+      </div>
+      <div
+        class="mt-4"
+      >
+        <h3
+          class="mb-2 text-lg font-semibold text-gray-900 dark:text-white"
+        >
+          Data Flow
+        </h3>
+        <div
+          class="flex flex-col space-y-4 p-4"
+        >
+          <div
+            class="flex font-sm items-center"
+          >
+            <span
+              class="text-green-500 mr-2"
+            >
+              ✓
+            </span>
+            <span
+              class="font-bold"
+            >
+              You load the page
+            </span>
+          </div>
+          <div
+            class="flex font-sm items-center"
+          >
+            <span
+              class="text-green-500 mr-2"
+            >
+              ✓
+            </span>
+            <span
+              class="font-bold"
+            >
+              App gets rendered and api call is being made
+            </span>
+          </div>
+          <div
+            class="flex font-sm items-center"
+          >
+            <span
+              class="text-green-500 mr-2"
+            >
+              ✓
+            </span>
+            <span
+              class="font-bold"
+            >
+              Data is fetched from the Api via actions and stored in context via reducer
+            </span>
+          </div>
+          <div
+            class="flex font-sm items-center"
+          >
+            <span
+              class="text-green-500 mr-2"
+            >
+              ✓
+            </span>
+            <span
+              class="font-bold"
+            >
+              Home Page then renders the cart component ,based on the data from context, where you can add/remove/select items to purchase
+            </span>
+          </div>
+          <div
+            class="flex font-sm items-center"
+          >
+            <span
+              class="text-green-500 mr-2"
+            >
+              ✓
+            </span>
+            <span
+              class="font-bold"
+            >
+              Button gets disabled / enabled based on items you select
+            </span>
+          </div>
+          <div
+            class="flex font-sm items-center"
+          >
+            <span
+              class="text-green-500 mr-2"
+            >
+              ✓
+            </span>
+            <span
+              class="font-bold"
+            >
+              On further steps you have option to select address or add a new address
+            </span>
+          </div>
+          <div
+            class="flex font-sm items-center"
+          >
+            <span
+              class="text-green-500 mr-2"
+            >
+              ✓
+            </span>
+            <span
+              class="font-bold"
+            >
+              You may add a new address which will post be shown in the adress list
+            </span>
+          </div>
+          <div
+            class="flex font-sm items-center"
+          >
+            <span
+              class="text-green-500 mr-2"
+            >
+              ✓
+            </span>
+            <span
+              class="font-bold"
+            >
+              On next step you will have an option to check the price and adress and submit it
+            </span>
+          </div>
+          <div
+            class="flex font-sm items-center"
+          >
+            <span
+              class="text-green-500 mr-2"
+            >
+              ✓
+            </span>
+            <span
+              class="font-bold"
+            >
+              On Api success , a success toast will be shown with success message and cart becomes empty
+            </span>
+          </div>
+          <div
+            class="flex font-sm items-center"
+          >
+            <span
+              class="text-green-500 mr-2"
+            >
+              ✓
+            </span>
+            <span
+              class="font-bold"
+            >
+              On failure you will be at the same page and left with an option to retry
+            </span>
+          </div>
+          <div
+            class="flex font-sm items-center"
+          >
+            <span
+              class="text-green-500 mr-2"
+            >
+              ✓
+            </span>
+            <span
+              class="font-bold"
+            >
+              Thats the end :)
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mt-4"
+      >
+        <h3
+          class="mb-2 text-lg font-semibold text-gray-900 dark:text-white"
+        >
+          HLD Diagram
+        </h3>
+        <img
+          alt="design diagrams"
+          src="https://rukminim1.flixcart.com/www/800/800/promos/26/01/2024/04b6c585-1a76-475a-a2ee-34cfe0806242.png?q=100"
+        />
+      </div>
+      <div
+        class="mt-4"
+      >
+        <h3
+          class="mb-2 text-lg font-semibold text-gray-900 dark:text-white"
+        >
+          Data Flow in the project
+        </h3>
+        <img
+          alt="data flow"
+          src="https://rukminim1.flixcart.com/www/1000/1000/promos/26/01/2024/c43eae7a-3773-4361-9e2f-fb7fbc3be3a9.png?q=100"
+        />
+      </div>
+    </div>
+  </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
   "findAllByDisplayValue": [Function],
@@ -35,7 +622,6 @@ Object {
   "getByTestId": [Function],
   "getByText": [Function],
   "getByTitle": [Function],
-  "logTestingPlaygroundURL": [Function],
   "queryAllByAltText": [Function],
   "queryAllByDisplayValue": [Function],
   "queryAllByLabelText": [Function],
@@ -52,5 +638,7 @@ Object {
   "queryByTestId": [Function],
   "queryByText": [Function],
   "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
 }
 `;

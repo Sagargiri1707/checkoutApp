@@ -14,7 +14,7 @@ import './App.css';
 import { withErrorBoundary } from './HOC/errorBoundaryHoc';
 import { LoaderSVG } from './Constants';
 const Architecture = lazy(() => import('./Pages/Architecture'));
-const TestReports = lazy(() => import('./Pages/TestCase'));
+const TestReports = lazy(() => import('./Pages/Reports'));
 
 const App: React.FC = () => {
   const [state, dispatch] = useReducer(eventsReducer, initState);
@@ -208,7 +208,7 @@ const App: React.FC = () => {
             }
           />
           <Route
-            path="/testcase"
+            path="/report"
             element={
               <Suspense fallback={<LoaderSVG/>}>
                 <TestReports />

@@ -12,7 +12,7 @@ jest.mock('react-router-dom', () => {
 });
 describe('navbar component', () => {
   it('should render a header ', () => {
-    render(<Navbar />);
-    expect(screen).toMatchSnapshot();
+    const container = render(<Navbar />);
+    expect(container).toMatchSnapshot();
   });
 });

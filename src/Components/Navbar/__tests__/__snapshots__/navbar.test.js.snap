@@ -2,6 +2,95 @@
 
 exports[`navbar component should render a header  1`] = `
 Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <header>
+        <div
+          class="flex bg-TK-background text-white h-[60px] items-center justify-between	"
+        >
+          <div
+            class="flex items-center m-4"
+          />
+          <div
+            class="flex pr-3 pl-3 hidden lg:flex"
+          >
+            <a
+              href="https://www.linkedin.com/in/sagargiri07"
+              target="_blank"
+            >
+              <div
+                class="flex pr-3 pl-3"
+              >
+                <div
+                  class="mt-7 text-xs xl:text-sm font-bold"
+                >
+                  Linkedin
+                </div>
+              </div>
+            </a>
+            <a
+              href="https://www.twitter.com/sagargiri1707"
+              target="_blank"
+            >
+              <div
+                class="flex pr-3 pl-3"
+              >
+                <div
+                  class="mt-7 text-xs xl:text-sm font-bold"
+                >
+                  Twitter
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </header>
+    </div>
+  </body>,
+  "container": <div>
+    <header>
+      <div
+        class="flex bg-TK-background text-white h-[60px] items-center justify-between	"
+      >
+        <div
+          class="flex items-center m-4"
+        />
+        <div
+          class="flex pr-3 pl-3 hidden lg:flex"
+        >
+          <a
+            href="https://www.linkedin.com/in/sagargiri07"
+            target="_blank"
+          >
+            <div
+              class="flex pr-3 pl-3"
+            >
+              <div
+                class="mt-7 text-xs xl:text-sm font-bold"
+              >
+                Linkedin
+              </div>
+            </div>
+          </a>
+          <a
+            href="https://www.twitter.com/sagargiri1707"
+            target="_blank"
+          >
+            <div
+              class="flex pr-3 pl-3"
+            >
+              <div
+                class="mt-7 text-xs xl:text-sm font-bold"
+              >
+                Twitter
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </header>
+  </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
   "findAllByDisplayValue": [Function],
@@ -35,7 +124,6 @@ Object {
   "getByTestId": [Function],
   "getByText": [Function],
   "getByTitle": [Function],
-  "logTestingPlaygroundURL": [Function],
   "queryAllByAltText": [Function],
   "queryAllByDisplayValue": [Function],
   "queryAllByLabelText": [Function],
@@ -52,5 +140,7 @@ Object {
   "queryByTestId": [Function],
   "queryByText": [Function],
   "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
 }
 `;

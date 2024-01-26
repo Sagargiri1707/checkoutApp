@@ -44,11 +44,11 @@ const dataFlow = [
   { name: 'Thats the end :)', icon: 0 },
 ];
 const partners= [
-  "Frontend partner: React JS",
-  "Styling partner: Tailwind css",
-  "Testing partner: React testing library",
-  "Testing partner: React testing library",
-  "Deployment partner : Vercel"
+  "Frontend: React JS",
+  "Styling: Tailwind css",
+  "Testing: React testing library",
+  "Testing: React testing library",
+  "Deployment : Vercel"
 ]
 function Arch() {
   return (
