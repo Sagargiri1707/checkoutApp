@@ -2,7 +2,7 @@ import React, { useContext, lazy, Suspense, useCallback } from 'react';
 import ProductList from '../../Components/ProductList';
 import { GlobalAppContext } from '../../Context/Context';
 import { LoaderSVG } from '../../Constants';
-const Button = lazy(() => import('../../Components/Button'));
+import Button from '../../Components/Button';
 const Address = lazy(() => import('../../Components/AddressList'));
 const FinalConfirmation = lazy(
   () => import('../../Components/FinalConfirmation')

@@ -13,6 +13,7 @@ function Button({
   return (
     <button
       type={type || 'button'}
+      role='button'
       disabled={disabled}
       onClick={e => {
         onChange(e, id);
