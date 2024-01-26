@@ -43,14 +43,6 @@ const App: React.FC = () => {
         });
         getAddressList()
           .then(res => {
-            let response: { addressList: AddressInterface[] } = {
-              addressList: [],
-            };
-            if (Array.isArray(res?.data?.addressList)) {
-              response = {
-                ...res.data,
-              };
-            }
             dispatch({
               type: Actions.SET_ADDRESS_DATA,
               payload: res.data,
