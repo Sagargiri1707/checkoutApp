@@ -4,8 +4,8 @@ function FinalConfirmation() {
   const { productDetails, checkedState, adressDetails, currentAddress } =
     useContext(GlobalAppContext);
 
-  const selectedAdress = adressDetails.addressList[currentAddress];
-  const itemBreakUp = productDetails.productData.reduce(
+  const selectedAdress = adressDetails?.addressList?.[currentAddress];
+  const itemBreakUp = productDetails?.productData?.reduce(
     (acc, i, index) => {
       if (checkedState[index]) {
         acc.totalPrice += i.itemPrice.originalPrice * i.quantity;
@@ -28,11 +28,11 @@ function FinalConfirmation() {
       <div className="border-t border-b py-2 p-4">
         <div className="flex justify-between">
           <span>Product Price:</span>
-          <span>₹{itemBreakUp.totalPrice.toFixed(2)}</span>
+          <span>₹{itemBreakUp?.totalPrice?.toFixed(2)}</span>
         </div>
         <div className="flex justify-between">
           <span>Discounts</span>
-          <span>₹{itemBreakUp.discount.toFixed(2)}</span>
+          <span>₹{itemBreakUp?.discount?.toFixed(2)}</span>
         </div>
       </div>
 
@@ -40,20 +40,20 @@ function FinalConfirmation() {
         <div className="flex justify-between">
           <span className="text-xl font-bold">Total Amount:</span>
           <span className="text-xl font-bold">
-            ₹{itemBreakUp.finalPrice.toFixed(2)}
+            ₹{itemBreakUp?.finalPrice?.toFixed(2)}
           </span>
         </div>
       </div>
       <div className="bg-white mt-6 rounded w-full p-4">
         <p className="text-xl font-bold mb-2">Selected address:</p>
         <p className="text-gray-700">
-          {selectedAdress.name}
+          {selectedAdress?.name}
           <br />
-          {selectedAdress.phone}
+          {selectedAdress?.phone}
           <br />
-          {selectedAdress.address}
+          {selectedAdress?.address}
           <br />
-          {selectedAdress.city}, {selectedAdress.city} {selectedAdress.pincode}
+          {selectedAdress?.city}, {selectedAdress?.city} {selectedAdress?.pincode}
         </p>
       </div>
     </div>

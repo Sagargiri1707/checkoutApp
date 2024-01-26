@@ -24,13 +24,19 @@ const App: React.FC = () => {
     });
     getProductList()
       .then(res => {
+        let response ={productData: []}
+        if(Array.isArray(res?.data?.RESPONSE?.productData)){
+          response = {
+            ...res.data.RESPONSE
+          }
+        }
         dispatch({
           type: Actions.FETCH_PRODUCT_DATA_SUCCESS,
-          payload: { ...res.data.RESPONSE, loading: false },
+          payload: { ...response, loading: false },
         });
         dispatch({
           type: Actions.SET_CHECKED_STATE,
-          payload: Array(res.data.RESPONSE.productData.length).fill(false),
+          payload: Array(res?.data?.RESPONSE?.productData?.length).fill(false),
         });
         getAddressList()
           .then(res => {
@@ -93,7 +99,7 @@ const App: React.FC = () => {
     index: number
   ) {
     if (type === 'delete') {
-      const updatedState = state.productDetails.productData.filter(
+      const updatedState = state?.productDetails?.productData?.filter(
         (productData: { id: number }) => productData.id !== id
       );
       dispatch({

@@ -168,5 +168,5 @@ export interface AddressProps {
   pincode: string;
   city: string;
   phone: string;
-  onChange: (index: number) => void;
+  onChange: (index: number, alt:any) => void;
 }

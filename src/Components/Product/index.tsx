@@ -47,18 +47,18 @@ function Product({
         </div>
         <div className="lg:w-1/2 lg:ml-4 p-1">
           <div className="font-semibold text-lg ">
-            {titles?.title.length > 70
-              ? titles?.title.slice(0, 70) + ' ...'
+            {titles?.title.length > 65
+              ? titles?.title.slice(0, 65) + ' ...'
               : titles.title}
           </div>
-          <div className="font-light hidden lg:inline	text-slate-400 text-sm">
+          <div className="font-light hidden lg:block mt-1	text-slate-400 text-sm">
             {titles?.subtitle}
           </div>
-          <div className="font-light  hidden lg:inline	text-slate-500 text-sm">
+          <div className="font-light  hidden lg:block mt-1	text-slate-500 text-sm">
             {sellerDetails?.name}
           </div>
           <div>
-            <span className="font-light	text-neutral-500 text-sm line-through">
+            <span className="font-light mt-1	text-neutral-500 text-sm line-through">
               ₹{itemPrice?.originalPrice}
             </span>
             <span className="font-bold	text-green-500 text-lg">
@@ -74,7 +74,7 @@ function Product({
             ) : null}
           </div>
         </div>
-        <div className="w-full lg:w-3/12 flex lg:inline align-between lg:justify-evenly p-2 lg:items-baseline flex-wrap	justify-center">
+        <div className="w-full lg:w-3/12 flex lg:block align-between lg:justify-evenly p-2 lg:items-baseline flex-wrap	justify-center">
           <div className="mb-4 w-44">
             <span>Delivery by {deliveryDetails?.eta}</span>
             {deliveryDetails?.isFasterDeliveryAvailable &&
@@ -85,8 +85,8 @@ function Product({
             <div
               className={
                 deliveryDetails?.isdeliveryChargeWaived
-                  ? 'text-green-500 font-semibold line-through mt-2 hidden lg:inline text-sm'
-                  : ' hidden lg:inline'
+                  ? 'text-green-500 font-semibold line-through mt-2 hidden lg:block text-sm'
+                  : ' hidden lg:block'
               }
             >
               {deliveryDetails?.deliveryCharge} Delivery charge

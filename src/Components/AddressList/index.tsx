@@ -10,7 +10,7 @@ function AddressList() {
       <div className="flex flex-col items-center justify-center">
         <h4>Select an address to proceed</h4>
         <div className="h-96 lg:h-128 p-4 lg:p-0 lg:h-128 overflow-auto">
-          {adressDetails.addressList.map((address, id) => {
+          {adressDetails?.addressList?.map((address, id) => {
             return (
               <Address
                 key={id}

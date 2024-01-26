@@ -22,10 +22,10 @@ function AddNewAdress() {
   });
   function submitForm(e: any) {
     e.preventDefault();
-    if (!PHONE_REGEX.test(formState.phone)) {
+    if (!PHONE_REGEX.test(formState?.phone)) {
       return toast.error('Invalid Phone number given');
     }
-    if (!PINCODE_REGEX.test(formState.pincode)) {
+    if (!PINCODE_REGEX.test(formState?.pincode)) {
       return toast.error('Invalid pin code given');
     } else
       addNewAdress({
@@ -63,7 +63,7 @@ function AddNewAdress() {
                 Name
               </label>
               <input
-                value={formState.name}
+                value={formState?.name}
                 onChange={handleFormChange}
                 type="text"
                 id="name"
@@ -77,7 +77,7 @@ function AddNewAdress() {
                 Adress
               </label>
               <input
-                value={formState.address}
+                value={formState?.address}
                 onChange={handleFormChange}
                 type="text"
                 id="address"
@@ -92,7 +92,7 @@ function AddNewAdress() {
                 Phone number
               </label>
               <input
-                value={formState.phone}
+                value={formState?.phone}
                 onChange={handleFormChange}
                 minLength={10}
                 maxLength={13}
@@ -109,7 +109,7 @@ function AddNewAdress() {
                 City
               </label>
               <input
-                value={formState.city}
+                value={formState?.city}
                 onChange={handleFormChange}
                 type="text"
                 id="city"
@@ -124,7 +124,7 @@ function AddNewAdress() {
                 State
               </label>
               <input
-                value={formState.state}
+                value={formState?.state}
                 onChange={handleFormChange}
                 type="text"
                 placeholder='Please enter state'
@@ -142,7 +142,7 @@ function AddNewAdress() {
                 Landmark (Optional)
               </label>
               <input
-                value={formState.landmark}
+                value={formState?.landmark}
                 onChange={handleFormChange}
                 type="text"
                 id="landmark"
@@ -156,7 +156,7 @@ function AddNewAdress() {
                 Pincode
               </label>
               <input
-                value={formState.pincode}
+                value={formState?.pincode}
                 onChange={handleFormChange}
                 type="text"
                 minLength={6}

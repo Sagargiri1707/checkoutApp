@@ -13,7 +13,7 @@ function DeliveryMessage({ seconds }: { seconds: number }) {
     return () => clearInterval(intervalId);
   }, [minutes]);
 
-  return (
+  return seconds ? (
     <p className="font-medium text-sm">
       (If ordered within{' '}
       {minutes > 60
@@ -21,7 +21,7 @@ function DeliveryMessage({ seconds }: { seconds: number }) {
         : `${minutes} minutes`}{' '}
       )
     </p>
-  );
+  ) : null;
 }
 
 export default DeliveryMessage;
