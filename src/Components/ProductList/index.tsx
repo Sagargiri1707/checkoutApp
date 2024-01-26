@@ -7,7 +7,7 @@ function ProductList() {
   const { productDetails } = useContext(GlobalAppContext);
   const { productData } = productDetails;
   return (
-    <div>
+    <div className='h-144 overflow-auto	'>
       {productData.length !== 0 ? (
         productData.map((product, id) => (
           <Product index={id} key={product.id} {...product} />

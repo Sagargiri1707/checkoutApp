@@ -12,6 +12,7 @@ import * as Actions from './reducers/Actions';
 import { AddressInterface, ProductDataInterface } from './Types';
 import './App.css';
 import { withErrorBoundary } from './HOC/errorBoundaryHoc';
+import { LoaderSVG } from './Constants';
 const Architecture = lazy(() => import('./Pages/Architecture'));
 const TestReports = lazy(() => import('./Pages/TestCase'));
 
@@ -193,7 +194,7 @@ const App: React.FC = () => {
           <Route
             path="/"
             element={
-              <Suspense fallback={<div>loading</div>}>
+              <Suspense fallback={<LoaderSVG/>}>
                 <Home />
               </Suspense>
             }
@@ -201,7 +202,7 @@ const App: React.FC = () => {
           <Route
             path="/architecture"
             element={
-              <Suspense fallback={<div>loading</div>}>
+              <Suspense fallback={<LoaderSVG/>}>
                 <Architecture />
               </Suspense>
             }
@@ -209,7 +210,7 @@ const App: React.FC = () => {
           <Route
             path="/testcase"
             element={
-              <Suspense fallback={<div>loading</div>}>
+              <Suspense fallback={<LoaderSVG/>}>
                 <TestReports />
               </Suspense>
             }
