@@ -59,8 +59,8 @@ function Arch() {
         </h3>
         <ul className="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
           {
-            partners.map(partner=>(
-              <li className="flex items-center">
+            partners.map((partner,id)=>(
+              <li key={id} className="flex items-center">
               <Tick />
              {partner}
             </li>

@@ -3,7 +3,7 @@ import { withErrorBoundary } from "../../HOC/errorBoundaryHoc";
 
 function Navbar() {
   return (
-    <header >
+    <header>
       <div className="flex bg-TK-background text-white h-[60px] items-center justify-between	">
         <div className="flex items-center m-4">
         <Link to={"/"}>
