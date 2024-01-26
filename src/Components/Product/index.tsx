@@ -32,12 +32,15 @@ function Product({
   return (
     <div className="border-2 m-2 mt-6 p-6 relative max-w-3xl mx-auto bg-zinc-50 rounded-md">
       <input
+      id={`checkbox_product_${index}`}
         role="checkbox"
         type="checkbox"
         checked={checkedState[index]}
         onChange={_ => changeCheckedState(index)}
         className="rounded mr-2 absolute left-4 top-4 h-4 w-4"
       />
+            <label htmlFor={`checkbox_product_${index}`}></label>
+
       <div className="flex flex-col lg:flex-row justify-between items-center lg:items-stretch	">
         <div className="lg:w-1/3 h-48 mb-4 lg:mb-0 flex items-center justify-center text-center">
           {media?.type === 'image' ? (

@@ -22,8 +22,11 @@ function Address({
         onChange={e => {
           onChange(index, e.target.checked);
         }}
+        id={`checkbox_${index}`}
         className="rounded mr-2 left-4 top-4 h-4 w-4"
       />
+      <label htmlFor={`checkbox_${index}`}></label>
+
       <div>
         {name && (
           <div className="flex justify-center items-center w-10 h-10 rounded-full bg-gray-300">

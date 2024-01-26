@@ -61,7 +61,7 @@ function AddNewAdress() {
           <form onSubmit={submitForm}>
             <div className="flex flex-col mb-1">
               <label htmlFor="name" className="text-base text-gray-700 mb-2">
-                Name
+                Name (reqd)
               </label>
               <input
                 value={formState?.name}
@@ -75,7 +75,7 @@ function AddNewAdress() {
             </div>
             <div className="flex flex-col mb-1">
               <label htmlFor="address" className="text-base text-gray-700 mb-2">
-                Adress
+                Adress (reqd)
               </label>
               <input
                 value={formState?.address}
@@ -90,7 +90,7 @@ function AddNewAdress() {
             </div>
             <div className="flex flex-col mb-1">
               <label htmlFor="phone" className="text-base text-gray-700 mb-2">
-                Phone number
+                Phone number (reqd)
               </label>
               <input
                 value={formState?.phone}
@@ -107,7 +107,7 @@ function AddNewAdress() {
             </div>
             <div className="flex flex-col mb-1">
               <label htmlFor="city" className="text-base text-gray-700 mb-2">
-                City
+                City (reqd)
               </label>
               <input
                 value={formState?.city}
@@ -122,7 +122,7 @@ function AddNewAdress() {
             </div>
             <div className="flex flex-col mb-1">
               <label htmlFor="state" className="text-base text-gray-700 mb-2">
-                State
+                State (reqd)
               </label>
               <input
                 value={formState?.state}
@@ -154,7 +154,7 @@ function AddNewAdress() {
             </div>
             <div className="flex flex-col mb-1">
               <label htmlFor="pincode" className="text-base text-gray-700 mb-2">
-                Pincode
+                Pincode (reqd)
               </label>
               <input
                 value={formState?.pincode}
