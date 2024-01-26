@@ -1,8 +1,8 @@
 import React, { useContext, lazy, Suspense, useCallback } from 'react';
-import ProductList from '../../Components/ProductList';
 import { GlobalAppContext } from '../../Context/Context';
-import { LoaderSVG } from '../../Constants';
-import Button from '../../Components/Button';
+import { LoaderSVG, ArrowSvg } from '../../Constants';
+const Button = lazy(() => import('../../Components/Button'));
+const ProductList = lazy(() => import('../../Components/ProductList'));
 const Address = lazy(() => import('../../Components/AddressList'));
 const FinalConfirmation = lazy(
   () => import('../../Components/FinalConfirmation')
@@ -25,7 +25,7 @@ function Home() {
   function renderItemBasedOnStep(step: number) {
     let text = 'Continue';
     let isBtnDisabled = false;
-    switch(step){
+    switch (step) {
       case 0:
         isBtnDisabled = checkedState.filter(Boolean).length <= 0;
         break;
@@ -40,48 +40,56 @@ function Home() {
       <React.Fragment>
         {(!step || step === 0) && (
           <React.Fragment>
+            <Suspense fallback={<LoaderSVG />}>
               <ProductList />
+            </Suspense>
+
             {productDetails?.productData?.length !== 0 && (
-              <Button
-                text={text}
-                disabled={isBtnDisabled}
-                onChange={continueToNextStep}
-                id={0}
-                color={'rose'}
-                customClass={'mt-6'}
-              />
+              <Suspense fallback={<LoaderSVG />}>
+                <Button
+                  text={text}
+                  disabled={isBtnDisabled}
+                  onChange={continueToNextStep}
+                  id={0}
+                  color={'rose'}
+                  customClass={'mt-6'}
+                />
+              </Suspense>
             )}
           </React.Fragment>
         )}
         {step === 1 && (
           <React.Fragment>
-            <Suspense fallback={<LoaderSVG/>}>
+            <Suspense fallback={<LoaderSVG />}>
               <Address />
             </Suspense>
-
-            <Button
-              text={text}
-              disabled={!isBtnDisabled}
-              onChange={continueToNextStep}
-              id={0}
-              color={'rose'}
-            />
+            <Suspense fallback={<LoaderSVG />}>
+              <Button
+                text={text}
+                disabled={!isBtnDisabled}
+                onChange={continueToNextStep}
+                id={0}
+                color={'rose'}
+              />
+            </Suspense>
           </React.Fragment>
         )}
         {step === 2 && (
           <React.Fragment>
-            <Suspense fallback={<LoaderSVG/>}>
+            <Suspense fallback={<LoaderSVG />}>
               <FinalConfirmation />
             </Suspense>
-            <Button
-              text={successLoader ? 'Loading' : text}
-              disabled={false}
-              onChange={purchaseItem}
-              id={0}
-              type="button"
-              color={'rose'}
-              customClass={''}
-            />
+            <Suspense fallback={<LoaderSVG />}>
+              <Button
+                text={successLoader ? 'Loading' : text}
+                disabled={false}
+                onChange={purchaseItem}
+                id={0}
+                type="button"
+                color={'rose'}
+                customClass={''}
+              />
+            </Suspense>
           </React.Fragment>
         )}
       </React.Fragment>
@@ -98,7 +106,9 @@ function Home() {
               changeCurrentStep(currentStep - 1);
             }}
           >
-            <LoaderSVG/>
+            <Suspense fallback={<LoaderSVG />}>
+              <ArrowSvg />
+            </Suspense>
           </button>
         )}
         {renderItemBasedOnStep(currentStep)}

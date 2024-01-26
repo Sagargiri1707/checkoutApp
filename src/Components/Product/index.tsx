@@ -30,7 +30,7 @@ function Product({
     addOrDeleteItem(id, type, a, index);
   }
   return (
-    <div className="border-2 m-2 mt-6 p-6 relative max-w-3xl mx-auto bg-zinc-50 rounded-md">
+    <div className="border-2 m-2 mt-6 p-6 relative max-w-3xl mx-auto rounded-md">
       <input
       id={`checkbox_product_${index}`}
         role="checkbox"
@@ -55,10 +55,10 @@ function Product({
               ? titles?.title.slice(0, 65) + ' ...'
               : titles.title}
           </div>
-          <div className="font-light hidden lg:block mt-1	text-slate-400 text-sm">
+          <div className="font-light hidden lg:block mt-1	text-gray-400 text-sm">
             {titles?.subtitle}
           </div>
-          <div className="font-light  hidden lg:block mt-1	text-slate-500 text-sm">
+          <div className="font-light  hidden lg:block mt-1	text-gray-500 text-sm">
             {sellerDetails?.name}
           </div>
           <div>
