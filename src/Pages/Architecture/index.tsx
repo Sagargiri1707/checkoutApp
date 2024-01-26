@@ -1,5 +1,5 @@
 function Arch(){
-    return <img />
+    return <div> To be added </div>
 }
 
 export default Arch

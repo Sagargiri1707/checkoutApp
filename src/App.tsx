@@ -41,13 +41,19 @@ const App: React.FC = () => {
         });
         getAddressList()
           .then(res => {
+            let response:{addressList:AddressInterface[]} = { addressList: [] };
+            if (Array.isArray(res?.data?.addressList)) {
+              response = {
+                ...res.data,
+              };
+            }
             dispatch({
               type: Actions.SET_ADDRESS_DATA,
-              payload: res,
+              payload: res.data,
             });
             let i = 0;
-            for (let i = 0; i < res.addressList.length; i++) {
-              if (res.addressList[i].isDefault) {
+            for (let i = 0; i < res?.data?.addressList.length; i++) {
+              if (res?.data?.addressList[i].isDefault) {
                 break;
               }
             }

@@ -39,7 +39,7 @@ function Product({
         className="rounded mr-2 absolute left-4 top-4 h-4 w-4"
       />
       <div className="flex flex-col lg:flex-row justify-between items-center lg:items-stretch	">
-        <div className="lg:w-1/3 h-48 mb-4 lg:mb-0">
+        <div className="lg:w-1/3 h-48 mb-4 lg:mb-0 flex items-center justify-center">
           {media?.type === 'image' ? (
             <img className=" h-full w-auto" src={media?.url} />
           ) : (

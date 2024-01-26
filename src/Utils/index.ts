@@ -1,6 +1,5 @@
-import addressList from '../ApiResponses/AddressListResponse.json';
 import Axios, { AxiosResponse } from 'axios';
-import { GET_CART_DATA } from '../Constants';
+import { GET_CART_DATA,GET_ADDRESS_DATA } from '../Constants';
 import {
   AddressInterface,
   ProductDataInterface,
@@ -13,13 +12,12 @@ export const getProductList = async (): Promise<
   const productList = await Axios.get(GET_CART_DATA);
   return productList;
 };
-
-export const getAddressList = (): Promise<{
-  addressList: AddressInterface[];
-}> =>
-  new Promise(res => {
-    setTimeout(() => res(addressList), 1000);
-  });
+export const getAddressList = async (): Promise<
+  AxiosResponse<{ addressList: AddressInterface[] }>
+> => {
+  const addressList = await Axios.get(GET_ADDRESS_DATA);
+  return addressList;
+};
 
 export const completePurchase = (): Promise<SuccessResponseInterface> =>
   new Promise((res, rej) => {
