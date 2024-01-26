@@ -25,7 +25,9 @@ const App: React.FC = () => {
     });
     getProductList()
       .then(res => {
-        let response:{productData:ProductDataInterface[]} = { productData: [] };
+        let response: { productData: ProductDataInterface[] } = {
+          productData: [],
+        };
         if (Array.isArray(res?.data?.RESPONSE?.productData)) {
           response = {
             ...res.data.RESPONSE,
@@ -41,7 +43,9 @@ const App: React.FC = () => {
         });
         getAddressList()
           .then(res => {
-            let response:{addressList:AddressInterface[]} = { addressList: [] };
+            let response: { addressList: AddressInterface[] } = {
+              addressList: [],
+            };
             if (Array.isArray(res?.data?.addressList)) {
               response = {
                 ...res.data,
@@ -74,7 +78,7 @@ const App: React.FC = () => {
   function changeCheckedState(index: number) {
     dispatch({
       type: Actions.SET_CHECKED_STATE,
-      payload: state.checkedState.map((state:number, id:number) => {
+      payload: state.checkedState.map((state: number, id: number) => {
         if (id === index) return !state;
         else return state;
       }),
@@ -117,24 +121,28 @@ const App: React.FC = () => {
       });
       dispatch({
         type: Actions.SET_CHECKED_STATE,
-        payload: state.checkedState.filter((_:number, id: number) => id !== index),
+        payload: state.checkedState.filter(
+          (_: number, id: number) => id !== index
+        ),
       });
     }
     if (type === 'alter') {
       dispatch({
         type: Actions.SET_PRODUCT_DATA,
         payload: {
-          productData: state.productDetails.productData.map((productData:ProductDataInterface) => {
-            if (productData.id === id) {
-              return {
-                ...productData,
-                quantity:
-                  sign === '+'
-                    ? productData.quantity + 1
-                    : productData.quantity - 1,
-              };
-            } else return productData;
-          }),
+          productData: state.productDetails.productData.map(
+            (productData: ProductDataInterface) => {
+              if (productData.id === id) {
+                return {
+                  ...productData,
+                  quantity:
+                    sign === '+'
+                      ? productData.quantity + 1
+                      : productData.quantity - 1,
+                };
+              } else return productData;
+            }
+          ),
         },
       });
     }
