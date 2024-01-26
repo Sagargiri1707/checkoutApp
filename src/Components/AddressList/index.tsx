@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { GlobalAppContext } from '../../Context/Context';
 import Address from '../Address';
 import AddNewAdress from '../AddNewAdress';
+import { withErrorBoundary } from '../../HOC/errorBoundaryHoc';
 function AddressList() {
   const { adressDetails, currentAddress, changeCurrentAdress } =
     useContext(GlobalAppContext);
@@ -28,4 +29,4 @@ function AddressList() {
   );
 }
 
-export default AddressList;
+export default withErrorBoundary('AddressList',AddressList);

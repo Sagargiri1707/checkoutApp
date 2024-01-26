@@ -1,6 +1,13 @@
 import * as Actions from './Actions';
-
-export const initState = {
+interface InitState {
+  productDetails: { productData: [], loading: boolean },
+  adressDetails: { addressList: [] },
+  currentAddress: number,
+  currentStep: number,
+  checkedState: [],
+  successLoader: boolean,
+}
+export const initState:InitState = {
   productDetails: { productData: [], loading: false },
   adressDetails: { addressList: [] },
   currentAddress: -1,
@@ -9,7 +16,7 @@ export const initState = {
   successLoader: false,
 };
 
-export const eventsReducer = (state: any, { type, payload }): any => {
+export const eventsReducer = (state: InitState, { type, payload }:any): any => {
   switch (type) {
     case Actions.FETCH_PRODUCT_DATA_START: {
       return {

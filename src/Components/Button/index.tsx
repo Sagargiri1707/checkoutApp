@@ -1,3 +1,4 @@
+import { withErrorBoundary } from '../../HOC/errorBoundaryHoc';
 import { ButtonPropsInterface } from '../../Types'
 
 function Button({
@@ -29,4 +30,4 @@ function Button({
   );
 }
 
-export default Button;
+export default withErrorBoundary('Button',Button);

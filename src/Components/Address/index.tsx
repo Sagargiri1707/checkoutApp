@@ -1,3 +1,4 @@
+import { withErrorBoundary } from '../../HOC/errorBoundaryHoc';
 import { AddressProps } from '../../Types';
 function Address({
   isSelected,
@@ -30,7 +31,7 @@ function Address({
           </div>
         )}
       </div>
-      <div className="text-sm font-medium w-8/12 truncate">
+      <div className="text-sm font-medium w-64 lg:w-8/12 truncate">
         {name && <span className="block mb-2 mt-1">{name}</span>}
         {phone && <p className="text-xs text-gray-500 mb-1">{phone}</p>}
         {address && (
@@ -55,4 +56,4 @@ function Address({
   );
 }
 
-export default Address;
+export default withErrorBoundary('Address',Address);

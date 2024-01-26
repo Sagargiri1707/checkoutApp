@@ -40,7 +40,7 @@ function Home() {
           <Suspense fallback={<div>Loading</div>}>
             <ProductList />
           </Suspense>
-          {productDetails.productData.length !== 0 && (
+          {productDetails?.productData?.length !== 0 && (
             <Button
               text={text}
               disabled={isBtnDisabled}

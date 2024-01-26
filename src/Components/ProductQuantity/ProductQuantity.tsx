@@ -1,3 +1,4 @@
+import { withErrorBoundary } from '../../HOC/errorBoundaryHoc';
 import { ProductQuantityProps } from '../../Types';
 function ProductQuantity({ index, onChange }: ProductQuantityProps) {
   return (
@@ -22,4 +23,4 @@ function ProductQuantity({ index, onChange }: ProductQuantityProps) {
   );
 }
 
-export default ProductQuantity;
+export default withErrorBoundary('ProductQuantity',ProductQuantity);

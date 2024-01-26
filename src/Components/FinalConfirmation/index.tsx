@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { GlobalAppContext } from '../../Context/Context';
+import { withErrorBoundary } from '../../HOC/errorBoundaryHoc';
 function FinalConfirmation() {
   const { productDetails, checkedState, adressDetails, currentAddress } =
     useContext(GlobalAppContext);
@@ -60,4 +61,4 @@ function FinalConfirmation() {
   );
 }
 
-export default FinalConfirmation;
+export default withErrorBoundary('FinalConfirmation',FinalConfirmation);

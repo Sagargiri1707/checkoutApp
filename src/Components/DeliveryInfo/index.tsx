@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { withErrorBoundary } from '../../HOC/errorBoundaryHoc';
 
 function DeliveryMessage({ seconds }: { seconds: number }) {
   const [minutes, setMinutes] = useState(Math.ceil(seconds / 60));
@@ -24,4 +25,4 @@ function DeliveryMessage({ seconds }: { seconds: number }) {
   ) : null;
 }
 
-export default DeliveryMessage;
+export default withErrorBoundary('DeliveryMessage',DeliveryMessage);

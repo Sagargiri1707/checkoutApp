@@ -6,6 +6,7 @@ import { GlobalAppContext } from '../../Context/Context';
 import { ProductProps } from '../../Types';
 import { MouseEventHandler } from 'react';
 import DeliveryMessage from '../DeliveryInfo';
+import { withErrorBoundary } from '../../HOC/errorBoundaryHoc';
 
 function Product({
   id,
@@ -64,11 +65,11 @@ function Product({
             <span className="font-bold	text-green-500 text-lg">
               ₹{itemPrice?.discountedPrice?.toFixed(2)}
             </span>
-            <span className="font-bold	text-green-500 text-lg ml-4">
+            <span className="font-bold	text-green-500 text-md ml-4">
               {itemPrice?.percentageOff}% off
             </span>
             {itemPrice?.offersAvailable?.count > 0 ? (
-              <span className="pl-2 text-sm text-gray-400	">
+              <span className="pl-2 text-xs text-gray-400	">
                 {itemPrice?.offersAvailable?.count} offers available
               </span>
             ) : null}
@@ -110,4 +111,4 @@ function Product({
   );
 }
 
-export default Product;
+export default withErrorBoundary('Product',Product);

@@ -1,3 +1,4 @@
+import { withErrorBoundary } from '../../HOC/errorBoundaryHoc';
 import { RatingPropsInterface } from '../../Types';
 
 function Rating(props: RatingPropsInterface) {
@@ -26,4 +27,4 @@ function Rating(props: RatingPropsInterface) {
   );
 }
 
-export default Rating;
+export default withErrorBoundary('Rating',Rating);

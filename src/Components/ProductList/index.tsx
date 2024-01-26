@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { GlobalAppContext } from '../../Context/Context';
 import Product from '../Product';
+import { withErrorBoundary } from '../../HOC/errorBoundaryHoc';
 
 function ProductList() {
   const { productDetails } = useContext(GlobalAppContext);
@@ -15,4 +16,4 @@ function ProductList() {
     </div>
   );
 }
-export default ProductList;
+export default withErrorBoundary('ProductList',ProductList);

@@ -11,6 +11,7 @@ import { eventsReducer, initState } from './reducers/index';
 import * as Actions from './reducers/Actions';
 import { AddressInterface } from './Types';
 import './App.css';
+import { withErrorBoundary } from './HOC/errorBoundaryHoc';
 const Architecture = lazy(() => import('./Pages/Architecture'));
 const TestReports = lazy(() => import('./Pages/TestCase'));
 
@@ -206,4 +207,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default withErrorBoundary("app",App);

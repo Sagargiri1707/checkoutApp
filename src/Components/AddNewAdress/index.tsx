@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { GlobalAppContext } from '../../Context/Context';
 import { AddressInterface } from '../../Types';
 import Button from '../Button';
+import { withErrorBoundary } from '../../HOC/errorBoundaryHoc';
 const PHONE_REGEX = /^([0]|\+91)?([6-9][0-9]{9})$/;
 const PINCODE_REGEX = /^[1-9][0-9]{5}$/;
 
@@ -191,4 +192,4 @@ function AddNewAdress() {
   );
 }
 
-export default AddNewAdress;
+export default withErrorBoundary('AddNewAdres',AddNewAdress);
