@@ -23,7 +23,7 @@ function Product({
     useContext(GlobalAppContext);
 
   function changeCartVolume(
-    event: MouseEventHandler<HTMLButtonElement>,
+    _: MouseEventHandler<HTMLButtonElement>,
     a: '+' | '-'
   ) {
     const type = a === '-' || a === '+' ? 'alter' : 'delete';
@@ -35,7 +35,7 @@ function Product({
         role="checkbox"
         type="checkbox"
         checked={checkedState[index]}
-        onChange={e => changeCheckedState(index)}
+        onChange={_ => changeCheckedState(index)}
         className="rounded mr-2 absolute left-4 top-4 h-4 w-4"
       />
       <div className="flex flex-col lg:flex-row justify-between items-center lg:items-stretch	">

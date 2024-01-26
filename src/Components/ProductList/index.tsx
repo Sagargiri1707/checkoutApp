@@ -6,14 +6,18 @@ import { withErrorBoundary } from '../../HOC/errorBoundaryHoc';
 function ProductList() {
   const { productDetails } = useContext(GlobalAppContext);
   const { productData } = productDetails;
-  return productData.length !== 0 ? (
-    productData.map((product, id) => (
-      <Product index={id} key={product.id} {...product} />
-    ))
-  ) : (
+  return (
     <div>
-      {productDetails?.loading ? 'Loading' : 'Nothing is present in cart'}
+      {productData.length !== 0 ? (
+        productData.map((product, id) => (
+          <Product index={id} key={product.id} {...product} />
+        ))
+      ) : (
+        <div>
+          {productDetails?.loading ? 'Loading' : 'Nothing is present in cart'}
+        </div>
+      )}
     </div>
   );
 }
-export default withErrorBoundary('ProductList',ProductList);
+export default withErrorBoundary('ProductList', ProductList);

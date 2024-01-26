@@ -1,10 +1,10 @@
-import { Component } from 'react';
+import { Component, ErrorInfo } from 'react';
 import React from 'react';
 
 interface IOwnState{
 	hasError: boolean;
-	error: string;
-	errorInfo: string
+	error: Error | null;
+	errorInfo: ErrorInfo |null;
 }
 interface IOwnProps{
 	children: any;
@@ -12,16 +12,16 @@ interface IOwnProps{
 }
 
 class ErrorBoundary extends Component<IOwnProps,IOwnState> {
-	constructor(props) {
+	constructor(props:IOwnProps) {
 		super(props);
 		this.state = {
 			hasError: false,
-			error:"",
-			errorInfo:""
+			error:null,
+			errorInfo:null
 		};
 	}
 
-	componentDidCatch(error, errorInfo) {
+	componentDidCatch(error:Error, errorInfo:ErrorInfo) {
 		this.setState({
 			error: error,
 			errorInfo: errorInfo,
@@ -39,11 +39,14 @@ class ErrorBoundary extends Component<IOwnProps,IOwnState> {
 	}
 }
 
-export function withErrorBoundary (name:string, WrappedComponent:any) {
+export function withErrorBoundary(
+	name: string,
+	WrappedComponent: React.ComponentType<any>
+  ){
 	const componentName = name || WrappedComponent.name || WrappedComponent.displayName || 'Component';
 
 	class ComponentWithErrorBoundary extends React.Component {
-		constructor(props) {
+		constructor(props:React.FC) {
 			super(props);
 		}
 
@@ -56,12 +59,9 @@ export function withErrorBoundary (name:string, WrappedComponent:any) {
 		}
 	}
 
-	return  React.forwardRef((props, ref) => {
-		if (!ref) {
-			return <ComponentWithErrorBoundary {...props} />;
-		}
+	return (props:any) => {
 		return <ComponentWithErrorBoundary {...props} />;
-	});;
+	};
 }
 
 export default ErrorBoundary;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { withErrorBoundary } from '../../HOC/errorBoundaryHoc';
 
 function DeliveryMessage({ seconds }: { seconds: number }) {

@@ -9,7 +9,7 @@ import { getProductList, getAddressList, completePurchase } from './Utils';
 import { toast } from 'react-toastify';
 import { eventsReducer, initState } from './reducers/index';
 import * as Actions from './reducers/Actions';
-import { AddressInterface } from './Types';
+import { AddressInterface, ProductDataInterface } from './Types';
 import './App.css';
 import { withErrorBoundary } from './HOC/errorBoundaryHoc';
 const Architecture = lazy(() => import('./Pages/Architecture'));
@@ -25,11 +25,11 @@ const App: React.FC = () => {
     });
     getProductList()
       .then(res => {
-        let response ={productData: []}
-        if(Array.isArray(res?.data?.RESPONSE?.productData)){
+        let response:{productData:ProductDataInterface[]} = { productData: [] };
+        if (Array.isArray(res?.data?.RESPONSE?.productData)) {
           response = {
-            ...res.data.RESPONSE
-          }
+            ...res.data.RESPONSE,
+          };
         }
         dispatch({
           type: Actions.FETCH_PRODUCT_DATA_SUCCESS,
@@ -46,7 +46,7 @@ const App: React.FC = () => {
               payload: res,
             });
             let i = 0;
-            for (let i = 0; i < res.addressList; i++) {
+            for (let i = 0; i < res.addressList.length; i++) {
               if (res.addressList[i].isDefault) {
                 break;
               }
@@ -56,11 +56,11 @@ const App: React.FC = () => {
               payload: i,
             });
           })
-          .catch(err => {
+          .catch(() => {
             toast.error('Error in fetching Address api Response');
           });
       })
-      .catch(err => {
+      .catch(() => {
         toast.error('Failed in fetching api product list');
       });
   }, []);
@@ -68,7 +68,7 @@ const App: React.FC = () => {
   function changeCheckedState(index: number) {
     dispatch({
       type: Actions.SET_CHECKED_STATE,
-      payload: state.checkedState.map((state, id) => {
+      payload: state.checkedState.map((state:number, id:number) => {
         if (id === index) return !state;
         else return state;
       }),
@@ -111,14 +111,14 @@ const App: React.FC = () => {
       });
       dispatch({
         type: Actions.SET_CHECKED_STATE,
-        payload: state.checkedState.filter((el, id: number) => id !== index),
+        payload: state.checkedState.filter((_:number, id: number) => id !== index),
       });
     }
     if (type === 'alter') {
       dispatch({
         type: Actions.SET_PRODUCT_DATA,
         payload: {
-          productData: state.productDetails.productData.map(productData => {
+          productData: state.productDetails.productData.map((productData:ProductDataInterface) => {
             if (productData.id === id) {
               return {
                 ...productData,
@@ -184,7 +184,14 @@ const App: React.FC = () => {
         }}
       >
         <Routes>
-          <Route path="/" element={<Suspense fallback={<div>loading</div>}><Home /></Suspense>} />
+          <Route
+            path="/"
+            element={
+              <Suspense fallback={<div>loading</div>}>
+                <Home />
+              </Suspense>
+            }
+          />
           <Route
             path="/architecture"
             element={
@@ -207,4 +214,4 @@ const App: React.FC = () => {
   );
 };
 
-export default withErrorBoundary("app",App);
+export default withErrorBoundary('app', App);

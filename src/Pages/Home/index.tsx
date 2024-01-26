@@ -78,7 +78,9 @@ function Home() {
             disabled={false}
             onChange={purchaseItem}
             id={0}
+            type="button"
             color={'rose'}
+            customClass={""}
           />
         </React.Fragment>
       );

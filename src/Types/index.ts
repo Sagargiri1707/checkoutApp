@@ -1,4 +1,3 @@
-import { MouseEventHandler } from 'react';
 export type ContextItem = {
   _id: string;
   name: string;
@@ -22,7 +21,7 @@ export interface AddressInterface {
 
 export interface ButtonPropsInterface {
   text: string;
-  onChange?: (e: MouseEventHandler<HTMLButtonElement>, id: string) => void;
+  onChange: (e: any, id?: string|number) => void;
   id?: number;
   type?: 'button' | 'submit' | 'reset';
   color?: string;
@@ -85,6 +84,7 @@ export interface SuccessResponseInterface {
 export interface GlobalAppContextPropsInterface {
   productDetails: {
     productData: ProductDataInterface[];
+    loading: boolean;
   };
   adressDetails: {
     addressList: AddressInterface[];
