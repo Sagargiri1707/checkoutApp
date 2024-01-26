@@ -14,7 +14,7 @@ function ProductList() {
         ))
       ) : (
         <div>
-          {productDetails?.loading ? 'Loading' : 'Nothing is present in cart'}
+          {productDetails?.loading ? 'Loading' : 'Your Cart is empty'}
         </div>
       )}
     </div>

@@ -39,15 +39,15 @@ function Product({
         className="rounded mr-2 absolute left-4 top-4 h-4 w-4"
       />
       <div className="flex flex-col lg:flex-row justify-between items-center lg:items-stretch	">
-        <div className="lg:w-1/3 h-48 mb-4 lg:mb-0 flex items-center justify-center">
+        <div className="lg:w-1/3 h-48 mb-4 lg:mb-0 flex items-center justify-center text-center">
           {media?.type === 'image' ? (
             <img className=" h-full w-auto" src={media?.url} />
           ) : (
             <video src={media?.url}></video>
           )}
         </div>
-        <div className="lg:w-1/2 lg:ml-4 p-1">
-          <div className="font-semibold text-lg ">
+        <div className="lg:w-1/2 lg:ml-4 p-1 text-center lg:text-left	">
+          <div className="font-semibold text-lg">
             {titles?.title.length > 65
               ? titles?.title.slice(0, 65) + ' ...'
               : titles.title}
@@ -75,7 +75,7 @@ function Product({
             ) : null}
           </div>
         </div>
-        <div className="w-full lg:w-3/12 flex lg:block align-between lg:justify-evenly p-2 lg:items-baseline flex-wrap	justify-center">
+        <div className="w-full lg:w-3/12 flex lg:block align-between lg:justify-evenly p-2 lg:items-baseline flex-wrap	justify-center lg:text-left	">
           <div className="mb-4 w-44">
             <span>Delivery by {deliveryDetails?.eta}</span>
             {deliveryDetails?.isFasterDeliveryAvailable &&
