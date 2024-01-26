@@ -30,7 +30,7 @@ function Product({
     addOrDeleteItem(id, type, a, index);
   }
   return (
-    <div className="border-2 m-2 mt-6 p-6 relative max-w-3xl mx-auto">
+    <div className="border-2 m-2 mt-6 p-6 relative max-w-3xl mx-auto bg-zinc-50 rounded-md">
       <input
         role="checkbox"
         type="checkbox"
