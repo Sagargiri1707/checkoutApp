@@ -1,4 +1,4 @@
-import React, { useContext, lazy, Suspense } from 'react';
+import React, { useContext, lazy, Suspense, useCallback } from 'react';
 import ProductList from '../../Components/ProductList';
 import { GlobalAppContext } from '../../Context/Context';
 const Button = lazy(() => import('../../Components/Button'));
@@ -17,74 +17,75 @@ function Home() {
     successLoader,
   } = useContext(GlobalAppContext);
 
-  function continueToNextStep() {
+  const continueToNextStep = useCallback(() => {
     changeCurrentStep(currentStep + 1);
-  }
+  }, [changeCurrentStep, currentStep]);
+
   function renderItemBasedOnStep(step: number) {
     let text = 'Continue';
     let isBtnDisabled = false;
-    if (step === 0) {
-      text = 'Continue';
-      isBtnDisabled = checkedState.filter(Boolean).length <= 0;
+    switch(step){
+      case 0:
+        isBtnDisabled = checkedState.filter(Boolean).length <= 0;
+        break;
+      case 1:
+        isBtnDisabled = currentAddress !== -1;
+        break;
+      case 2:
+        text = 'Place order';
+        break;
     }
-    if (step === 1) {
-      text = 'Continue';
-      isBtnDisabled = currentAddress !== -1;
-    } else if (step === 2) {
-      text = 'Place order';
-    }
+    return (
+      <React.Fragment>
+        {(!step || step === 0) && (
+          <React.Fragment>
+            <Suspense fallback={<div>Loading</div>}>
+              <ProductList />
+            </Suspense>
+            {productDetails?.productData?.length !== 0 && (
+              <Button
+                text={text}
+                disabled={isBtnDisabled}
+                onChange={continueToNextStep}
+                id={0}
+                color={'rose'}
+              />
+            )}
+          </React.Fragment>
+        )}
+        {step === 1 && (
+          <React.Fragment>
+            <Suspense fallback={<div>Loading</div>}>
+              <Address />
+            </Suspense>
 
-    if (!step || step === 0) {
-      return (
-        <React.Fragment>
-          <Suspense fallback={<div>Loading</div>}>
-            <ProductList />
-          </Suspense>
-          {productDetails?.productData?.length !== 0 && (
             <Button
               text={text}
-              disabled={isBtnDisabled}
+              disabled={!isBtnDisabled}
               onChange={continueToNextStep}
               id={0}
               color={'rose'}
             />
-          )}
-        </React.Fragment>
-      );
-    } else if (step === 1) {
-      return (
-        <React.Fragment>
-          <Suspense fallback={<div>Loading</div>}>
-            <Address />
-          </Suspense>
-
-          <Button
-            text={text}
-            disabled={!isBtnDisabled}
-            onChange={continueToNextStep}
-            id={0}
-            color={'rose'}
-          />
-        </React.Fragment>
-      );
-    } else if (step === 2) {
-      return (
-        <React.Fragment>
-          <Suspense fallback={<div>Loading</div>}>
-            <FinalConfirmation />
-          </Suspense>
-          <Button
-            text={successLoader ? 'Loading' : text}
-            disabled={false}
-            onChange={purchaseItem}
-            id={0}
-            type="button"
-            color={'rose'}
-            customClass={""}
-          />
-        </React.Fragment>
-      );
-    }
+          </React.Fragment>
+        )}
+        {step === 2 && (
+          <React.Fragment>
+            <Suspense fallback={<div>Loading</div>}>
+              <FinalConfirmation />
+            </Suspense>
+            <Button
+              text={successLoader ? 'Loading' : text}
+              disabled={false}
+              onChange={purchaseItem}
+              id={0}
+              type="button"
+              color={'rose'}
+              customClass={''}
+            />
+          </React.Fragment>
+        )}
+      </React.Fragment>
+    );
 
     return <React.Fragment></React.Fragment>;
   }

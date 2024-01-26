@@ -16,7 +16,7 @@ export const initState:InitState = {
   successLoader: false,
 };
 
-export const eventsReducer = (state: InitState, { type, payload }:any): any => {
+export const eventsReducer = (state: InitState, { type, payload }:{type: string,payload:any}): any => {
   switch (type) {
     case Actions.FETCH_PRODUCT_DATA_START: {
       return {
