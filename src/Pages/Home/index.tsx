@@ -87,10 +87,9 @@ function Home() {
       </React.Fragment>
     );
 
-    return <React.Fragment></React.Fragment>;
   }
   return (
-    <div className="max-w-44">
+    <div className="max-w-44 lg:max-w-96 flex items-center justify-center">
       <div className="relative lg:container md:mx-auto p-4 m-0 lg:m-4  mt-2 md:mt-12   flex-col items-center justify-center flex">
         {currentStep !== 0 && (
           <button

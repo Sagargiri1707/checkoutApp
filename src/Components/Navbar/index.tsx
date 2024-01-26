@@ -23,7 +23,7 @@ function Navbar() {
             </div>
         </Link>
         </div>
-        <div className="flex pr-3 pl-3">
+        <div className="flex pr-3 pl-3 hidden lg:flex">
           <a target="_blank" href={'https://www.linkedin.com/in/sagargiri07'}>
             <div className="flex pr-3 pl-3">
               <div className="mt-7 text-xs xl:text-sm font-bold">Linkedin</div>

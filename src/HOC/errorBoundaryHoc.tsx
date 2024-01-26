@@ -33,7 +33,7 @@ class ErrorBoundary extends Component<IOwnProps,IOwnState> {
 	render() {
 		if (!this.props.children) return null; 
 		if (!this.state.hasError) return this.props.children;
-		console.error(this.state.errorInfo)
+		console.error(this.state.errorInfo,this.props.componentName)
 		return null
 		
 	}
