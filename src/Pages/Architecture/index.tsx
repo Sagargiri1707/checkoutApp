@@ -75,7 +75,7 @@ function Arch() {
         <div className="flex flex-col space-y-4 p-4">
           {dataFlow.map((data, id) => {
             return (
-              <div className="flex font-sm items-center">
+              <div key={id} className="flex font-sm items-center">
                 <span className="text-green-500 mr-2">
                   {data.icon === 0 ? '✓' : '•'}
                 </span>
