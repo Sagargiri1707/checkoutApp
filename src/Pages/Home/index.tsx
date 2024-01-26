@@ -40,9 +40,7 @@ function Home() {
       <React.Fragment>
         {(!step || step === 0) && (
           <React.Fragment>
-            <Suspense fallback={<LoaderSVG/>}>
               <ProductList />
-            </Suspense>
             {productDetails?.productData?.length !== 0 && (
               <Button
                 text={text}

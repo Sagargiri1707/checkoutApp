@@ -41,7 +41,7 @@ function Product({
       <div className="flex flex-col lg:flex-row justify-between items-center lg:items-stretch	">
         <div className="lg:w-1/3 h-48 mb-4 lg:mb-0 flex items-center justify-center text-center">
           {media?.type === 'image' ? (
-            <img className=" h-48 w-auto" src={media?.url} alt={titles?.title} loading='lazy'/>
+            <img className=" h-48 w-auto" src={media?.url?.replace(/q=70/, 'q=60')} alt={titles?.title} loading='lazy'/>
           ) : (
             <video src={media?.url}></video>
           )}
