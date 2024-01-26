@@ -26,7 +26,7 @@ function Product({
     _: MouseEventHandler<HTMLButtonElement>,
     a: '+' | '-'
   ) {
-    const type = a === '-' || a === '+' ? 'alter' : 'delete';
+    const type = a === '-' || a === '+' ?((quantity ===1 && a==="-") ?"delete" :'alter') : 'delete';
     addOrDeleteItem(id, type, a, index);
   }
   return (
@@ -94,7 +94,7 @@ function Product({
             </div>
           </div>
           {ratingValue && <Rating {...ratingValue} />}
-          <div className="flex justify-between items-center w-44 mt-8">
+          <div className="flex justify-between items-center w-44 mt-0 lg:mt-8">
             <ProductQuantity index={quantity} onChange={changeCartVolume} />
             <div>
               <Button
