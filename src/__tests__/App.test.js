@@ -1,8 +1,12 @@
 import React from 'react';
-import { render, waitFor, fireEvent,act } from '@testing-library/react';
+import { render,screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import {GlobalAppContext} from '../Context/Context'
+import { MemoryRouter, Routes ,Route} from 'react-router-dom';
+import Architecture from '../Pages/Architecture';
+import TestReports from '../Pages/Reports';
+import LoaderSVG from '../Constants';
 import App from '../App'
+import { act } from 'react-dom/test-utils';
 jest.mock('../Utils', () => ({
   getProductList: jest.fn(() => Promise.resolve({ data: { RESPONSE: { productData: [] } } })),
   getAddressList: jest.fn(() => Promise.resolve({ data: { addressList: [] } })),

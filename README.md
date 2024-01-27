@@ -41,7 +41,7 @@ Open your browser and navigate to [http://localhost:5173](http://localhost:5173)
 
 ## Author 👤
 
-👤 Your Name
+👤 Sagar Giri
 
 - Linkedin: [Sagar Giri](https://www.linkedin.com/in/sagargiri07)
 - Twitter: [@SagarGiri1707](twitter.com/sagargiri1707)
