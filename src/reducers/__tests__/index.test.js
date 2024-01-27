@@ -1,4 +1,4 @@
-import * as Actions from '../Actions';
+import * as Actions from '../ActionConstants';
 import { eventsReducer } from '../index';
 
 describe('Index component', () => {
