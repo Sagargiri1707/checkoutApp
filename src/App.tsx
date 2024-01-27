@@ -1,7 +1,6 @@
 import { useEffect, useReducer, lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './Components/Navbar';
-import Home from './Pages/Home';
 import { GlobalAppContext } from './Context/Context';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -15,6 +14,7 @@ import { withErrorBoundary } from './HOC/errorBoundaryHoc';
 import { LoaderSVG } from './Constants';
 const Architecture = lazy(() => import('./Pages/Architecture'));
 const TestReports = lazy(() => import('./Pages/Reports'));
+const  Home = lazy(()=>import ('./Pages/Home'));
 
 const App: React.FC = () => {
   const [state, dispatch] = useReducer(eventsReducer, initState);

@@ -39,7 +39,7 @@ function Home() {
     }
     return (
       <React.Fragment>
-        {(!step || step === 0) && (
+        {(step === 0) && (
           <React.Fragment>
             <Suspense fallback={<LoaderSVG />}>
               <ProductList />

@@ -1,5 +1,5 @@
 export const GET_CART_DATA =
-  'https://run.mocky.io/v3/0eac5116-80a7-471c-b7a5-6165e4b487aa';
+  'https://run.mocky.io/v3/7e8263aa-c0bc-473e-a38c-12b2a4913b95';
 
 export const GET_ADDRESS_DATA =
   'https://run.mocky.io/v3/5dd59607-a14e-4033-9832-366dfcaedd80';
