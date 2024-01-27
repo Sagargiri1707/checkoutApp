@@ -17,9 +17,4 @@ test('renders App component without crashing', async () => {
   );
   expect(screen).toMatchSnapshot()
 });
-    it('should call changeCheckedState function when invoked', () => {
-        const container = render(
-            <App />
-        );
-      });
 

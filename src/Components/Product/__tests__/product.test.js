@@ -86,7 +86,7 @@ jest.mock('react', () => {
         checkedState:[true], 
         changeCheckedState:jest.fn() ,
          addOrDeleteItem :jest.fn(),
-
+         dispatch:jest.fn()
     }),
   };
 });

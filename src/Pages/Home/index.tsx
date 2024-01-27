@@ -7,10 +7,11 @@ const Address = lazy(() => import('../../Components/AddressList'));
 const FinalConfirmation = lazy(
   () => import('../../Components/FinalConfirmation')
 );
+import {changeCurrentStep} from '../../reducers/Actions'
 function Home() {
   const {
     currentStep,
-    changeCurrentStep,
+    dispatch,
     checkedState,
     currentAddress,
     productDetails,
@@ -19,7 +20,7 @@ function Home() {
   } = useContext(GlobalAppContext);
 
   const continueToNextStep = useCallback(() => {
-    changeCurrentStep(currentStep + 1);
+    dispatch(changeCurrentStep(currentStep + 1));
   }, [changeCurrentStep, currentStep]);
 
   function renderItemBasedOnStep(step: number) {
@@ -103,7 +104,7 @@ function Home() {
           <button
             className="absolute left-0 top-0 bg-blue-300 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded transform scale-x-[-1]"
             onClick={() => {
-              changeCurrentStep(currentStep - 1);
+              dispatch(changeCurrentStep(currentStep - 1))
             }}
           >
             <Suspense fallback={<LoaderSVG />}>

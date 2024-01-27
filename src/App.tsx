@@ -8,8 +8,8 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import { getProductList, getAddressList, completePurchase } from './Utils';
 import { toast } from 'react-toastify';
 import { eventsReducer, initState } from './reducers/index';
-import * as Actions from './reducers/Actions';
-import { AddressInterface, ProductDataInterface } from './Types';
+import * as Actions from './reducers/ActionConstants';
+import { ProductDataInterface } from './Types';
 import './App.css';
 import { withErrorBoundary } from './HOC/errorBoundaryHoc';
 import { LoaderSVG } from './Constants';
@@ -67,35 +67,6 @@ const App: React.FC = () => {
         toast.error('Failed in fetching api product list');
       });
   }, []);
-
-  function changeCheckedState(index: number) {
-    dispatch({
-      type: Actions.SET_CHECKED_STATE,
-      payload: state.checkedState.map((state: number, id: number) => {
-        if (id === index) return !state;
-        else return state;
-      }),
-    });
-  }
-  function changeCurrentStep(step: number) {
-    dispatch({
-      type: Actions.SET_CURRENT_STEP,
-      payload: step,
-    });
-  }
-  function changeCurrentAdress(index: number, isChecked: boolean) {
-    dispatch({
-      type: Actions.SET_CURRENT_ADDRESS,
-      payload: isChecked ? index : -1,
-    });
-  }
-  function addNewAdress(address: AddressInterface) {
-    const newAddress = [...state.adressDetails.addressList, address];
-    dispatch({
-      type: Actions.SET_ADDRESS_DATA,
-      payload: { addressList: newAddress },
-    });
-  }
   function addOrDeleteItem(
     id: number,
     type: 'delete' | 'alter',
@@ -181,13 +152,11 @@ const App: React.FC = () => {
       />
       <GlobalAppContext.Provider
         value={{
-          changeCheckedState,
-          changeCurrentStep,
-          changeCurrentAdress,
-          addNewAdress,
           addOrDeleteItem,
           purchaseItem,
+          dispatch,
           ...state,
+
         }}
       >
         <Routes>

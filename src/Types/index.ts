@@ -104,6 +104,7 @@ export interface GlobalAppContextPropsInterface {
   ) => void;
   successLoader: boolean;
   purchaseItem: () => void;
+  dispatch: (fn: any)=>void
 }
 
 export interface RatingPropsInterface {

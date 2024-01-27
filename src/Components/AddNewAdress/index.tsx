@@ -7,9 +7,9 @@ import Button from '../Button';
 import { withErrorBoundary } from '../../HOC/errorBoundaryHoc';
 const PHONE_REGEX = /^([0]|\+91)?([6-9][0-9]{9})$/;
 const PINCODE_REGEX = /^[1-9][0-9]{5}$/;
-
+import { addNewAdress } from '../../reducers/Actions';
 function AddNewAdress() {
-  const { addNewAdress } = useContext(GlobalAppContext);
+  const { dispatch, adressDetails } = useContext(GlobalAppContext);
   const [addANewAdress, setAddANewAddress] = useState(false);
 
   const [formState, setFormState] = useState<AddressInterface>({
@@ -29,12 +29,17 @@ function AddNewAdress() {
     if (!PINCODE_REGEX.test(formState?.pincode)) {
       return toast.error('Invalid pin code given');
     } else
-      addNewAdress({
-        ...formState,
-        isDefault: false,
-        locationTypeTag: 'Others',
-      });
-      setAddANewAddress(false)
+      dispatch(
+        addNewAdress(
+          {
+            ...formState,
+            isDefault: false,
+            locationTypeTag: 'Others',
+          },
+          adressDetails
+        )
+      );
+    setAddANewAddress(false);
     setFormState({
       name: '',
       address: '',
@@ -68,7 +73,7 @@ function AddNewAdress() {
                 onChange={handleFormChange}
                 type="text"
                 id="name"
-                placeholder='Please enter your name'
+                placeholder="Please enter your name"
                 className="rounded border border-gray-300 px-4 py-2 focus:ring focus:ring-blue-200"
                 required={true}
               />
@@ -82,8 +87,7 @@ function AddNewAdress() {
                 onChange={handleFormChange}
                 type="text"
                 id="address"
-                placeholder='Please enter Address'
-
+                placeholder="Please enter Address"
                 className="rounded border border-gray-300 px-4 py-2 focus:ring focus:ring-blue-200"
                 required={true}
               />
@@ -99,8 +103,7 @@ function AddNewAdress() {
                 maxLength={13}
                 type="text"
                 id="phone"
-                placeholder='+91XXXXXXXXXX'
-
+                placeholder="+91XXXXXXXXXX"
                 className="rounded border border-gray-300 px-4 py-2 focus:ring focus:ring-blue-200"
                 required={true}
               />
@@ -114,8 +117,7 @@ function AddNewAdress() {
                 onChange={handleFormChange}
                 type="text"
                 id="city"
-                placeholder='Please enter city'
-
+                placeholder="Please enter city"
                 className="rounded border border-gray-300 px-4 py-2 focus:ring focus:ring-blue-200"
                 required={true}
               />
@@ -128,8 +130,7 @@ function AddNewAdress() {
                 value={formState?.state}
                 onChange={handleFormChange}
                 type="text"
-                placeholder='Please enter state'
-
+                placeholder="Please enter state"
                 id="state"
                 className="rounded border border-gray-300 px-4 py-2 focus:ring focus:ring-blue-200"
                 required={true}
@@ -147,7 +148,7 @@ function AddNewAdress() {
                 onChange={handleFormChange}
                 type="text"
                 id="landmark"
-                placeholder='Please enter any landmark'
+                placeholder="Please enter any landmark"
                 className="rounded border border-gray-300 px-4 py-2 focus:ring focus:ring-blue-200"
                 required={false}
               />
@@ -163,8 +164,7 @@ function AddNewAdress() {
                 minLength={6}
                 maxLength={6}
                 id="pincode"
-                placeholder='Please enter pincode'
-
+                placeholder="Please enter pincode"
                 className="rounded border border-gray-300 px-4 py-2 focus:ring focus:ring-blue-200"
                 required={true}
               />
@@ -177,14 +177,13 @@ function AddNewAdress() {
             </button>
           </form>
         ) : (
-          <div className='flex items-center justify-center'>
-
-          <Button
-            color='rose'
-            type="button"
-            onChange={() => setAddANewAddress(true)}
-            text='+'
-          />
+          <div className="flex items-center justify-center">
+            <Button
+              color="rose"
+              type="button"
+              onChange={() => setAddANewAddress(true)}
+              text="+"
+            />
           </div>
         )}
       </div>
@@ -192,4 +191,4 @@ function AddNewAdress() {
   );
 }
 
-export default withErrorBoundary('AddNewAdres',AddNewAdress);
+export default withErrorBoundary('AddNewAdres', AddNewAdress);

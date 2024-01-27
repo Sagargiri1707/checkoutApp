@@ -1,4 +1,4 @@
-import * as Actions from './Actions';
+import * as Actions from './ActionConstants';
 interface InitState {
   productDetails: { productData: [], loading: boolean },
   adressDetails: { addressList: [] },

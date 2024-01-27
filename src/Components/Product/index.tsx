@@ -7,6 +7,7 @@ import { ProductProps } from '../../Types';
 import { MouseEventHandler } from 'react';
 import DeliveryMessage from '../DeliveryInfo';
 import { withErrorBoundary } from '../../HOC/errorBoundaryHoc';
+import {changeCheckedState} from '../../reducers/Actions'
 
 function Product({
   id,
@@ -19,7 +20,7 @@ function Product({
   ratingValue,
   quantity,
 }: ProductProps) {
-  const { checkedState, changeCheckedState, addOrDeleteItem } =
+  const { checkedState, dispatch, addOrDeleteItem } =
     useContext(GlobalAppContext);
 
   function changeCartVolume(
@@ -36,7 +37,7 @@ function Product({
         role="checkbox"
         type="checkbox"
         checked={checkedState[index]}
-        onChange={_ => changeCheckedState(index)}
+        onChange={_ => dispatch(changeCheckedState(index,checkedState))}
         className="rounded mr-2 absolute left-4 top-4 h-4 w-4"
       />
             <label htmlFor={`checkbox_product_${index}`}></label>

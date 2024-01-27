@@ -4,7 +4,7 @@ import { withErrorBoundary } from '../../HOC/errorBoundaryHoc';
 function FinalConfirmation() {
   const { productDetails, checkedState, adressDetails, currentAddress } =
     useContext(GlobalAppContext);
-
+adressDetails
   const selectedAdress = adressDetails?.addressList?.[currentAddress];
   const itemBreakUp = productDetails?.productData?.reduce(
     (acc, i, index) => {
@@ -24,7 +24,7 @@ function FinalConfirmation() {
     }
   );
   return (
-    <div className="mx-auto lg:w-96 w-full h:w-96 mt-8 mb-8 shadow-md">
+    <div className="mx-auto w-96 lg:w-auto lg:w-96 w-full mt-8 mb-8 shadow-md">
       <h2 className="text-2xl font-bold mb-4 p-4 text-center">Checkout</h2>
       <div className="border-t border-b py-2 p-4">
         <div className="flex justify-between">
