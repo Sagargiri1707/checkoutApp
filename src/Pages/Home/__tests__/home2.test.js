@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { act, render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Home from '../index'
 jest.mock('react', () => {
@@ -7,7 +8,7 @@ jest.mock('react', () => {
   return {
     ...ActualReact,
     useContext: () => ({
-        currentStep:0,
+        currentStep:1,
         dispatch:jest.fn(),
         checkedState:[true,false],
         currentAddress:0,
@@ -55,11 +56,9 @@ jest.mock('react', () => {
   };
 });
 test('renders Home component without crashing', async () => {
-  const container = act(()=>{
-    render(
+  const container = render(
       <Home />
   );
-  }) 
   expect(container).toMatchSnapshot()
 });
 

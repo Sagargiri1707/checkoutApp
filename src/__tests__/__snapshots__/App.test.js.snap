@@ -54,3 +54,9 @@ Object {
   "queryByTitle": [Function],
 }
 `;
+
+exports[`renders Architecture component on /architecture route 1`] = `
+Object {
+  "then": [Function],
+}
+`;

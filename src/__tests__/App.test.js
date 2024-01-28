@@ -1,24 +1,51 @@
 import React from 'react';
-import { render,screen } from '@testing-library/react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { MemoryRouter, Routes ,Route} from 'react-router-dom';
-import Architecture from '../Pages/Architecture';
-import TestReports from '../Pages/Reports';
-import LoaderSVG from '../Constants';
-import App from '../App'
-import { act } from 'react-dom/test-utils';
+import { act, screen, render } from '@testing-library/react';
+import Arch from '../Pages/Architecture';
+import App from '../App';
+import { MemoryRouter, Routes } from 'react-router-dom';
+
 jest.mock('../Utils', () => ({
-  getProductList: jest.fn(() => Promise.resolve({ data: { RESPONSE: { productData: [] } } })),
-  getAddressList: jest.fn(() => Promise.resolve({ data: { addressList: [] } })),
-  completePurchase: jest.fn(() => Promise.resolve({ msg: 'successfully purchased item' })),
+  getProductList: () =>
+    Promise.resolve({ data: { RESPONSE: { productData: [] } } }),
+  getAddressList: () =>
+    Promise.resolve({
+      data: {
+        addressList: [
+          {
+            isSelected: false,
+            isDefault: true,
+            index: 0,
+            name: 'Sagar',
+            city: 'bangalore',
+            address: 'hoodi main road',
+            isDefault: false,
+            landmark: 'central',
+            state: 'Bangalore',
+            phone: '+911231231231',
+            pincode: '12345',
+            onChange: jest.fn(),
+          },
+        ],
+      },
+    }),
+  completePurchase: () =>
+    Promise.resolve({ msg: 'successfully purchased item' }),
 }));
 
 test('renders App component without crashing', async () => {
-  const { getByTestId } = render(
-    <Router>
-      <App />
-    </Router>
-  );
-  expect(screen).toMatchSnapshot()
+  const { getByTestId } = act(() => {
+    render(<App />);
+  });
+  expect(screen).toMatchSnapshot();
 });
 
+it('renders Architecture component on /architecture route', async () => {
+  const container = act(() => {
+    render(
+      <MemoryRouter initialEntries={['/architecture']}>
+          <Arch />
+      </MemoryRouter>
+    );
+  });
+  expect(container).toMatchSnapshot()
+});

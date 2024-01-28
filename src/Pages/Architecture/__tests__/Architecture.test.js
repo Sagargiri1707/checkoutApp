@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Architecture from '../Architecture';
+import Architecture from '../index';
 
 describe('navbar component', () => {
   it('should render a header ', () => {
