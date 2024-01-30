@@ -67,79 +67,6 @@ const App: React.FC = () => {
         toast.error('Failed in fetching api product list');
       });
   }, []);
-  function addOrDeleteItem(
-    id: number,
-    type: 'delete' | 'alter',
-    sign: '+' | '-',
-    index: number
-  ) {
-    if (type === 'delete') {
-      const updatedState = state?.productDetails?.productData?.filter(
-        (productData: { id: number }) => productData.id !== id
-      );
-      dispatch({
-        type: Actions.SET_PRODUCT_DATA,
-        payload: {
-          productData: updatedState,
-        },
-      });
-      dispatch({
-        type: Actions.SET_CHECKED_STATE,
-        payload: state.checkedState.filter(
-          (_: number, id: number) => id !== index
-        ),
-      });
-    }
-    if (type === 'alter') {
-      dispatch({
-        type: Actions.SET_PRODUCT_DATA,
-        payload: {
-          productData: state.productDetails.productData.map(
-            (productData: ProductDataInterface) => {
-              if (productData.id === id) {
-                return {
-                  ...productData,
-                  quantity:
-                    sign === '+'
-                      ? productData.quantity + 1
-                      : productData.quantity - 1,
-                };
-              } else return productData;
-            }
-          ),
-        },
-      });
-    }
-  }
-  function purchaseItem() {
-    dispatch({
-      type: Actions.START_SUCCESS_LOADER,
-      payload: '',
-    });
-    completePurchase()
-      .then(res => {
-        dispatch({
-          type: Actions.END_SUCCESS_LOADER,
-          payload: '',
-        });
-        toast.success(res.msg);
-        dispatch({
-          type: Actions.SET_CURRENT_STEP,
-          payload: 0,
-        });
-        dispatch({
-          type: Actions.SET_PRODUCT_DATA,
-          payload: { productData: [] },
-        });
-      })
-      .catch(err => {
-        toast.error(err.msg);
-        dispatch({
-          type: Actions.END_SUCCESS_LOADER,
-          payload: '',
-        });
-      });
-  }
   return (
     <BrowserRouter>
       <Navbar />
@@ -152,8 +79,6 @@ const App: React.FC = () => {
       />
       <GlobalAppContext.Provider
         value={{
-          addOrDeleteItem,
-          purchaseItem,
           dispatch,
           ...state,
 

@@ -80,16 +80,18 @@ export interface ProductDataInterface {
 export interface SuccessResponseInterface {
   msg: string;
 }
-
-export interface GlobalAppContextPropsInterface {
-  productDetails: {
+export interface ProductDetails{
     productData: ProductDataInterface[];
     loading: boolean;
-  };
+}
+export type CheckedState = boolean[]
+
+export interface GlobalAppContextPropsInterface {
+  productDetails:ProductDetails,
   adressDetails: {
     addressList: AddressInterface[];
   };
-  checkedState: boolean[];
+  checkedState: CheckedState;
   changeCheckedState: (index: number) => void;
   currentStep: number;
   changeCurrentStep: (step: number) => void;

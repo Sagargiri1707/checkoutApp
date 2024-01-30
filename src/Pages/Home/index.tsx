@@ -1,6 +1,7 @@
 import React, { useContext, lazy, Suspense, useCallback } from 'react';
 import { GlobalAppContext } from '../../Context/Context';
 import { LoaderSVG, ArrowSvg } from '../../Constants';
+import {purchaseItem} from '../../reducers/Actions'
 const Button = lazy(() => import('../../Components/Button'));
 const ProductList = lazy(() => import('../../Components/ProductList'));
 const Address = lazy(() => import('../../Components/AddressList'));
@@ -15,7 +16,6 @@ function Home() {
     checkedState,
     currentAddress,
     productDetails,
-    purchaseItem,
     successLoader,
   } = useContext(GlobalAppContext);
 
@@ -53,7 +53,7 @@ function Home() {
                   onChange={continueToNextStep}
                   id={0}
                   color={'rose'}
-                  customClass={'mt-6'}
+                  customClass={'mt-6 lg:mt-0'}
                 />
               </Suspense>
             )}
@@ -84,7 +84,7 @@ function Home() {
               <Button
                 text={successLoader ? 'Loading' : text}
                 disabled={false}
-                onChange={purchaseItem}
+                onChange={()=>purchaseItem(dispatch)}
                 id={0}
                 type="button"
                 color={'rose'}

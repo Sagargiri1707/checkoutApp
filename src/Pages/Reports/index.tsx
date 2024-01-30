@@ -2,6 +2,8 @@ function Test(){
     return <div>
          <div className="container mx-auto w-128 ">
       <div className="mt-4">
+        <h3>Test Case Reports</h3>
+        <img src="https://rukminim1.flixcart.com/www/1500/1500/promos/30/01/2024/68190fe8-ee28-480c-bca2-d0b847e9bf53.png?q=100" alt="test case"/>
         <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
           Lighthouse insights
         </h3>

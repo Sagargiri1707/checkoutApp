@@ -7,7 +7,7 @@ import { ProductProps } from '../../Types';
 import { MouseEventHandler } from 'react';
 import DeliveryMessage from '../DeliveryInfo';
 import { withErrorBoundary } from '../../HOC/errorBoundaryHoc';
-import {changeCheckedState} from '../../reducers/Actions'
+import {changeCheckedState,addOrDeleteItem} from '../../reducers/Actions'
 
 function Product({
   id,
@@ -20,7 +20,7 @@ function Product({
   ratingValue,
   quantity,
 }: ProductProps) {
-  const { checkedState, dispatch, addOrDeleteItem } =
+  const { checkedState,productDetails, dispatch } =
     useContext(GlobalAppContext);
 
   function changeCartVolume(
@@ -28,7 +28,7 @@ function Product({
     a: '+' | '-'
   ) {
     const type = a === '-' || a === '+' ?((quantity ===1 && a==="-") ?"delete" :'alter') : 'delete';
-    addOrDeleteItem(id, type, a, index);
+    addOrDeleteItem( dispatch,{productDetails,checkedState},id, type, a, index);
   }
   return (
     <div className="border-2 m-2 mt-6 p-6 relative max-w-3xl mx-auto rounded-md">

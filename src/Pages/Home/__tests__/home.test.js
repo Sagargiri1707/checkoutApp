@@ -1,6 +1,5 @@
 import React from 'react';
 import { act, render } from '@testing-library/react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import Home from '../index'
 jest.mock('react', () => {
   const ActualReact = jest.requireActual('react');
@@ -49,7 +48,6 @@ jest.mock('react', () => {
                     }
                 }
             }]},
-        purchaseItem:jest.fn(),
         successLoader:false,
     }),
   };
