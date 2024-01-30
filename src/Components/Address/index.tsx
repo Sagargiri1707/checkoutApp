@@ -27,13 +27,11 @@ function Address({
       />
       <label htmlFor={`checkbox_${index}`}></label>
 
-      <div>
         {name && (
           <div className="flex justify-center items-center w-10 h-10 rounded-full bg-gray-300">
             {name?.[0] || 'A'}
           </div>
         )}
-      </div>
       <div className="text-sm font-medium w-64 lg:w-8/12 truncate">
         {name && <span className="block mb-2 mt-1">{name}</span>}
         {phone && <p className="text-xs text-gray-500 mb-1">{phone}</p>}
@@ -43,7 +41,7 @@ function Address({
         <div className="text-gray-500 w-full font-light truncate">
           {landmark}
           {isDefault ? (
-            <span className="font-semibold ml-1">(DEFAULT)</span>
+            <span className="font-bold ml-1">(DEFAULT)</span>
           ) : (
             ''
           )}

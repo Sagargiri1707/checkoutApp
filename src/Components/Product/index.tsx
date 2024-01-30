@@ -1,5 +1,6 @@
 import Button from '../Button';
 import Rating from '../Rating';
+import React from 'react';
 import ProductQuantity from '../ProductQuantity/ProductQuantity';
 import { useContext } from 'react';
 import { GlobalAppContext } from '../../Context/Context';
@@ -40,7 +41,7 @@ function Product({
         onChange={_ => dispatch(changeCheckedState(index,checkedState))}
         className="rounded mr-2 absolute left-4 top-4 h-4 w-4"
       />
-            <label htmlFor={`checkbox_product_${index}`}></label>
+            <label htmlFor={`checkbox_product_${index}`} className="hidden">Select Product</label>
 
       <div className="flex flex-col lg:flex-row justify-between items-center lg:items-stretch	">
         <div className="lg:w-1/3 h-48 mb-4 lg:mb-0 flex items-center justify-center text-center">
@@ -62,22 +63,22 @@ function Product({
           <div className="font-light  hidden lg:block mt-1	text-gray-500 text-sm">
             {sellerDetails?.name}
           </div>
-          <div>
+          <React.Fragment>
             <span className="font-light mt-1	text-neutral-500 text-sm line-through">
               ₹{itemPrice?.originalPrice}
             </span>
-            <span className="font-bold	text-green-500 text-lg">
+            <span className="font-bold	text-green-600 ml-1 text-lg">
               ₹{itemPrice?.discountedPrice?.toFixed(2)}
             </span>
-            <span className="font-bold	text-green-500 text-md ml-4">
+            <span className="font-bold	text-green-600 text-md ml-4">
               {itemPrice?.percentageOff}% off
             </span>
             {itemPrice?.offersAvailable?.count > 0 ? (
               <span className="pl-2 text-xs text-gray-400	">
-                {itemPrice?.offersAvailable?.count} offers available
+                {itemPrice?.offersAvailable?.count} {itemPrice?.offersAvailable?.count ===1 ?"offer":"offers"} available
               </span>
             ) : null}
-          </div>
+          </React.Fragment>
         </div>
         <div className="w-full lg:w-3/12 flex lg:block align-between lg:justify-evenly p-2 lg:items-baseline flex-wrap	justify-center lg:text-left	">
           <div className="mb-4 w-44">
@@ -100,14 +101,12 @@ function Product({
           {ratingValue && <Rating {...ratingValue} />}
           <div className="flex justify-between items-center w-44 mt-0 lg:mt-8">
             <ProductQuantity index={quantity} onChange={changeCartVolume} />
-            <div>
               <Button
                 text={'Delete'}
                 id={id}
                 onChange={changeCartVolume}
                 color="rose"
               />
-            </div>
           </div>
         </div>
       </div>

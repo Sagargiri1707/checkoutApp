@@ -2,7 +2,7 @@ export const GET_CART_DATA =
   'https://run.mocky.io/v3/7e8263aa-c0bc-473e-a38c-12b2a4913b95';
 
 export const GET_ADDRESS_DATA =
-  'https://run.mocky.io/v3/5dd59607-a14e-4033-9832-366dfcaedd80';
+  'https://run.mocky.io/v3/5af6b0a2-0946-4ae8-b2fe-595461cc9a08';
 
 export const LoaderSVG = () => {
   return (

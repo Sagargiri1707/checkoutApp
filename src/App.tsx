@@ -46,11 +46,11 @@ const App: React.FC = () => {
           .then(res => {
             dispatch({
               type: Actions.SET_ADDRESS_DATA,
-              payload: res.data,
+              payload: res?.data?.RESPONSE,
             });
             let i = 0;
-            for (let i = 0; i < res?.data?.addressList.length; i++) {
-              if (res?.data?.addressList[i].isDefault) {
+            for (let i = 0; i < res?.data?.RESPONSE?.addressList?.length; i++) {
+              if (res?.data?.RESPONSE?.addressList[i]?.isDefault) {
                 break;
               }
             }
