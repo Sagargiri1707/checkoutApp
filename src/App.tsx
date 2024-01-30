@@ -4,7 +4,7 @@ import Navbar from './Components/Navbar';
 import { GlobalAppContext } from './Context/Context';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-import { getProductList, getAddressList, completePurchase } from './Utils';
+import { getProductList, getAddressList } from './Utils';
 import { toast } from 'react-toastify';
 import { eventsReducer, initState } from './reducers/index';
 import * as Actions from './reducers/ActionConstants';
