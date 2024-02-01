@@ -26,7 +26,6 @@ export function changeCurrentStep(step: number) {
   };
 }
 export function changeCurrentAdress(index: number, isChecked: boolean) {
-  console.log(index, isChecked);
   return {
     type: Constants.SET_CURRENT_ADDRESS,
     payload: isChecked ? index : -1,

@@ -4,7 +4,7 @@ interface InitState {
   adressDetails: { addressList: [] },
   currentAddress: number,
   currentStep: number,
-  checkedState: [],
+  checkedState: boolean[],
   successLoader: boolean,
 }
 export const initState:InitState = {
