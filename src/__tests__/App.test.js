@@ -33,10 +33,10 @@ jest.mock('../Utils', () => ({
 }));
 
 test('renders App component without crashing', async () => {
-  const { getByTestId } = act(() => {
+  const container = act(() => {
     render(<App />);
   });
-  expect(screen).toMatchSnapshot();
+  expect(container).toMatchSnapshot();
 });
 
 it('renders Architecture component on /architecture route', async () => {

@@ -43,7 +43,7 @@ export function withErrorBoundary(
 	name: string,
 	WrappedComponent: React.ComponentType<any>
   ){
-	const componentName = name || WrappedComponent.name || WrappedComponent.displayName || 'Component';
+	const componentName = name || WrappedComponent?.name || WrappedComponent?.displayName || 'Component';
 
 	class ComponentWithErrorBoundary extends React.Component {
 		constructor(props:React.FC) {
@@ -53,7 +53,7 @@ export function withErrorBoundary(
 		render() {
 			return (
 				<ErrorBoundary componentName={componentName}>
-					<WrappedComponent {...this.props} />
+					{WrappedComponent ?<WrappedComponent {...this.props} /> : null}
 				</ErrorBoundary>
 			);
 		}
